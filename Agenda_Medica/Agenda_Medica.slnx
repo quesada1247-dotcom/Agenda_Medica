@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AccesoDatos/AccesoDatos.csproj" Id="57e72e03-1afd-4528-a448-620817f8f07e" />
+  <Project Path="LogicaNegocio/LogicaNegocio.csproj" Id="d308ca24-7073-488e-8fa9-efc914a3c406" />
+  <Project Path="Modelos/Modelos.csproj" Id="b66c080b-7648-458d-9376-e6e8efa88041" />
+  <Project Path="Presentacion/Presentacion.csproj" Id="8ff87136-0e3c-4574-a515-06e366857fba" />
+</Solution>
