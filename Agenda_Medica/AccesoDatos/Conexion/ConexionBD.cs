@@ -10,7 +10,7 @@ namespace AccesoDatos.Conexion
     public class ConexionBD
     {
         private readonly string cadenaConexion =
-           "Server=localhost;Database=AgendaMedica;Uid=root;Pwd=a123456789;";
+           "Server=localhost;Database=AgendaMedica_Final;Uid=root;Pwd=a123456789;";
 
         public MySqlConnection ObtenerConexion()
         {

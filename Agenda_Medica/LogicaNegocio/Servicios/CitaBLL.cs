@@ -9,32 +9,60 @@ namespace LogicaNegocio.Servicios
     {
         private readonly CitaDAL citaDAL = new CitaDAL();
 
+        // VALIDAR LOS DATOS DE LA CITA
+        private void ValidarCita(Cita cita)
+        {
+            if (cita == null)
+                throw new ArgumentNullException(nameof(cita));
+
+            if (cita.IdPaciente <= 0)
+                throw new ArgumentException("Debes seleccionar un paciente.");
+
+            if (cita.IdDoctor <= 0)
+                throw new ArgumentException("Debes seleccionar un doctor.");
+
+            if (cita.Fecha.Date < DateTime.Today)
+                throw new ArgumentException("La fecha no puede ser pasada.");
+
+            if (string.IsNullOrWhiteSpace(cita.Motivo))
+                throw new ArgumentException("El motivo es obligatorio.");
+
+            if (cita.DuracionMinutos != 30 &&
+                cita.DuracionMinutos != 45 &&
+                cita.DuracionMinutos != 60)
+            {
+                throw new ArgumentException(
+                    "La duración debe ser de 30, 45 o 60 minutos.");
+            }
+
+            if (cita.Tipo != "Presencial" &&
+                cita.Tipo != "Virtual" &&
+                cita.Tipo != "Urgencia")
+            {
+                throw new ArgumentException("El tipo de cita no es válido.");
+            }
+
+            if (cita.Hora < TimeSpan.Zero ||
+                cita.Hora >= TimeSpan.FromHours(24))
+            {
+                throw new ArgumentException("La hora de la cita no es válida.");
+            }
+        }
+
         // REGISTRAR CITA
         public bool RegistrarCita(Cita cita)
         {
-            if (cita == null)
-            {
-                throw new ArgumentNullException(nameof(cita));
-            }
+            ValidarCita(cita);
 
-            if (cita.IdPaciente <= 0)
+            // Verificar que el doctor no tenga otra cita en ese horario
+            if (citaDAL.TieneCruceHorario(
+                cita.IdDoctor,
+                cita.Fecha,
+                cita.Hora,
+                cita.DuracionMinutos))
             {
-                throw new ArgumentException("Debes seleccionar un paciente.");
-            }
-
-            if (cita.IdDoctor <= 0)
-            {
-                throw new ArgumentException("Debes seleccionar un doctor.");
-            }
-
-            if (cita.Fecha.Date < DateTime.Today)
-            {
-                throw new ArgumentException("La fecha de la cita no puede ser pasada.");
-            }
-
-            if (string.IsNullOrWhiteSpace(cita.Motivo))
-            {
-                throw new ArgumentException("El motivo de la cita es obligatorio.");
+                throw new ArgumentException(
+                    "El doctor ya tiene otra cita en ese horario.");
             }
 
             cita.Estado = "Programada";
@@ -51,29 +79,35 @@ namespace LogicaNegocio.Servicios
         // MODIFICAR CITA
         public bool ModificarCita(Cita cita)
         {
-            if (cita == null)
-            {
-                throw new ArgumentNullException(nameof(cita));
-            }
+            ValidarCita(cita);
 
             if (cita.IdCita <= 0)
-            {
                 throw new ArgumentException("Selecciona una cita válida.");
-            }
 
-            if (cita.IdPaciente <= 0 || cita.IdDoctor <= 0)
+            string[] estadosPermitidos =
             {
-                throw new ArgumentException("Debes seleccionar un paciente y un doctor.");
-            }
+        "Programada",
+        "Confirmada",
+        "Atendida",
+        "Cancelada",
+        "No asistio",
+        "Reprogramada"
+    };
 
-            if (cita.Fecha.Date < DateTime.Today)
-            {
-                throw new ArgumentException("La fecha no puede ser pasada.");
-            }
+            if (Array.IndexOf(estadosPermitidos, cita.Estado) < 0)
+                throw new ArgumentException("El estado de la cita no es válido.");
 
-            if (string.IsNullOrWhiteSpace(cita.Motivo))
+            // Verificar que el doctor no tenga otra cita en ese horario.
+            // Se excluye la cita que estamos modificando.
+            if (citaDAL.TieneCruceHorario(
+                cita.IdDoctor,
+                cita.Fecha,
+                cita.Hora,
+                cita.DuracionMinutos,
+                cita.IdCita))
             {
-                throw new ArgumentException("El motivo es obligatorio.");
+                throw new ArgumentException(
+                    "El doctor ya tiene otra cita en ese horario.");
             }
 
             return citaDAL.Actualizar(cita);
@@ -82,13 +116,9 @@ namespace LogicaNegocio.Servicios
         // ELIMINAR CITA
         public bool EliminarCita(int idCita)
         {
-            // Validar que el ID sea correcto.
             if (idCita <= 0)
-            {
                 throw new ArgumentException("Selecciona una cita válida.");
-            }
 
-            // Enviar la solicitud a la capa de acceso a datos.
             return citaDAL.Eliminar(idCita);
         }
     }

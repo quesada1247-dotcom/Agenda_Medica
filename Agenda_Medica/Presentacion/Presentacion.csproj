@@ -60,6 +60,12 @@
     <Compile Include="Presentacion\FrmDoctores.Designer.cs">
       <DependentUpon>FrmDoctores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\FrmHorarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FrmHorarios.Designer.cs">
+      <DependentUpon>FrmHorarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\FrmPacientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FrmDoctores.resx">
       <DependentUpon>FrmDoctores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\FrmHorarios.resx">
+      <DependentUpon>FrmHorarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FrmPacientes.resx">
       <DependentUpon>FrmPacientes.cs</DependentUpon>

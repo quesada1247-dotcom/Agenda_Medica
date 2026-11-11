@@ -34,7 +34,6 @@
             this.txtapellidos = new System.Windows.Forms.Label();
             this.txtapellidos2 = new System.Windows.Forms.TextBox();
             this.txtespecialidad = new System.Windows.Forms.Label();
-            this.txtespecialidad3 = new System.Windows.Forms.TextBox();
             this.txttelefono = new System.Windows.Forms.Label();
             this.txttelefono4 = new System.Windows.Forms.TextBox();
             this.txtcorreo = new System.Windows.Forms.Label();
@@ -44,6 +43,9 @@
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btneliminar = new System.Windows.Forms.Button();
             this.dgvDoctores = new System.Windows.Forms.DataGridView();
+            this.cmbEspecialidad = new System.Windows.Forms.ComboBox();
+            this.txtidentificacion = new System.Windows.Forms.Label();
+            this.txtidentificacion6 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoctores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,13 +99,6 @@
             this.txtespecialidad.TabIndex = 5;
             this.txtespecialidad.Text = "Especialidad:";
             // 
-            // txtespecialidad3
-            // 
-            this.txtespecialidad3.Location = new System.Drawing.Point(33, 173);
-            this.txtespecialidad3.Name = "txtespecialidad3";
-            this.txtespecialidad3.Size = new System.Drawing.Size(100, 20);
-            this.txtespecialidad3.TabIndex = 6;
-            // 
             // txttelefono
             // 
             this.txttelefono.AutoSize = true;
@@ -123,7 +118,7 @@
             // txtcorreo
             // 
             this.txtcorreo.AutoSize = true;
-            this.txtcorreo.Location = new System.Drawing.Point(142, 208);
+            this.txtcorreo.Location = new System.Drawing.Point(30, 209);
             this.txtcorreo.Name = "txtcorreo";
             this.txtcorreo.Size = new System.Drawing.Size(41, 13);
             this.txtcorreo.TabIndex = 9;
@@ -131,7 +126,7 @@
             // 
             // txtcorreo5
             // 
-            this.txtcorreo5.Location = new System.Drawing.Point(121, 224);
+            this.txtcorreo5.Location = new System.Drawing.Point(33, 225);
             this.txtcorreo5.Name = "txtcorreo5";
             this.txtcorreo5.Size = new System.Drawing.Size(100, 20);
             this.txtcorreo5.TabIndex = 10;
@@ -185,11 +180,39 @@
             this.dgvDoctores.TabIndex = 16;
             this.dgvDoctores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDoctores_CellClick);
             // 
+            // cmbEspecialidad
+            // 
+            this.cmbEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEspecialidad.FormattingEnabled = true;
+            this.cmbEspecialidad.Location = new System.Drawing.Point(33, 173);
+            this.cmbEspecialidad.Name = "cmbEspecialidad";
+            this.cmbEspecialidad.Size = new System.Drawing.Size(110, 21);
+            this.cmbEspecialidad.TabIndex = 17;
+            // 
+            // txtidentificacion
+            // 
+            this.txtidentificacion.AutoSize = true;
+            this.txtidentificacion.Location = new System.Drawing.Point(199, 209);
+            this.txtidentificacion.Name = "txtidentificacion";
+            this.txtidentificacion.Size = new System.Drawing.Size(73, 13);
+            this.txtidentificacion.TabIndex = 18;
+            this.txtidentificacion.Text = "Identificación.";
+            // 
+            // txtidentificacion6
+            // 
+            this.txtidentificacion6.Location = new System.Drawing.Point(202, 225);
+            this.txtidentificacion6.Name = "txtidentificacion6";
+            this.txtidentificacion6.Size = new System.Drawing.Size(100, 20);
+            this.txtidentificacion6.TabIndex = 19;
+            // 
             // FrmDoctores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 524);
+            this.Controls.Add(this.txtidentificacion6);
+            this.Controls.Add(this.txtidentificacion);
+            this.Controls.Add(this.cmbEspecialidad);
             this.Controls.Add(this.dgvDoctores);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
@@ -199,7 +222,6 @@
             this.Controls.Add(this.txtcorreo);
             this.Controls.Add(this.txttelefono4);
             this.Controls.Add(this.txttelefono);
-            this.Controls.Add(this.txtespecialidad3);
             this.Controls.Add(this.txtespecialidad);
             this.Controls.Add(this.txtapellidos2);
             this.Controls.Add(this.txtapellidos);
@@ -222,7 +244,6 @@
         private System.Windows.Forms.Label txtapellidos;
         private System.Windows.Forms.TextBox txtapellidos2;
         private System.Windows.Forms.Label txtespecialidad;
-        private System.Windows.Forms.TextBox txtespecialidad3;
         private System.Windows.Forms.Label txttelefono;
         private System.Windows.Forms.TextBox txttelefono4;
         private System.Windows.Forms.Label txtcorreo;
@@ -232,5 +253,8 @@
         private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Button btneliminar;
         private System.Windows.Forms.DataGridView dgvDoctores;
+        private System.Windows.Forms.ComboBox cmbEspecialidad;
+        private System.Windows.Forms.Label txtidentificacion;
+        private System.Windows.Forms.TextBox txtidentificacion6;
     }
 }

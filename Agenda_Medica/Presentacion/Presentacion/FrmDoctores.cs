@@ -2,34 +2,74 @@
 using Modelos.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Presentacion.Presentacion
 {
     public partial class FrmDoctores : Form
     {
+        // Objetos para utilizar las reglas del negocio.
         private DoctorBLL doctorBLL = new DoctorBLL();
+        private EspecialidadBLL especialidadBLL = new EspecialidadBLL();
 
         public FrmDoctores()
         {
             InitializeComponent();
+
+            // Cargar las especialidades al abrir el formulario.
+            CargarEspecialidades();
         }
 
+        // CARGAR ESPECIALIDADES EN EL COMBOBOX
+        private void CargarEspecialidades()
+        {
+            try
+            {
+                List<Especialidad> lista =
+                    especialidadBLL.ListarEspecialidades();
+
+                cmbEspecialidad.DataSource = lista;
+                cmbEspecialidad.DisplayMember = "Nombre";
+                cmbEspecialidad.ValueMember = "IdEspecialidad";
+                cmbEspecialidad.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al cargar las especialidades: " + ex.Message);
+            }
+        }
+
+        // LIMPIAR LOS CAMPOS DEL FORMULARIO
+        private void LimpiarCampos()
+        {
+            txtnombre1.Clear();
+            txtapellidos2.Clear();
+            txtidentificacion6.Clear();
+            txttelefono4.Clear();
+            txtcorreo5.Clear();
+
+            cmbEspecialidad.SelectedIndex = -1;
+        }
+
+        // GUARDAR DOCTOR
         private void btnguardar_Click(object sender, EventArgs e)
         {
             try
             {
+                if (cmbEspecialidad.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Debes seleccionar una especialidad.");
+                    return;
+                }
+
                 Doctor doctor = new Doctor();
 
                 doctor.Nombre = txtnombre1.Text;
                 doctor.Apellidos = txtapellidos2.Text;
-                doctor.Especialidad = txtespecialidad3.Text;
+                doctor.Identificacion = txtidentificacion6.Text;
+                doctor.IdEspecialidad =
+                    Convert.ToInt32(cmbEspecialidad.SelectedValue);
                 doctor.Telefono = txttelefono4.Text;
                 doctor.Correo = txtcorreo5.Text;
 
@@ -42,11 +82,8 @@ namespace Presentacion.Presentacion
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
-                    txtnombre1.Clear();
-                    txtapellidos2.Clear();
-                    txtespecialidad3.Clear();
-                    txttelefono4.Clear();
-                    txtcorreo5.Clear();
+                    dgvDoctores.DataSource = doctorBLL.ListarDoctores();
+                    LimpiarCampos();
                 }
                 else
                 {
@@ -59,6 +96,7 @@ namespace Presentacion.Presentacion
             }
         }
 
+        // CONSULTAR DOCTORES
         private void btnconsultar_Click(object sender, EventArgs e)
         {
             try
@@ -75,11 +113,11 @@ namespace Presentacion.Presentacion
             {
                 MessageBox.Show("Error al consultar doctores: " + ex.Message);
             }
-
-
         }
 
-        private void dgvDoctores_CellClick(object sender, DataGridViewCellEventArgs e)
+        // SELECCIONAR UN DOCTOR DE LA TABLA
+        private void dgvDoctores_CellClick(
+            object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -89,13 +127,25 @@ namespace Presentacion.Presentacion
                 {
                     txtnombre1.Text = doctor.Nombre;
                     txtapellidos2.Text = doctor.Apellidos;
-                    txtespecialidad3.Text = doctor.Especialidad;
+                    txtidentificacion6.Text = doctor.Identificacion;
                     txttelefono4.Text = doctor.Telefono;
                     txtcorreo5.Text = doctor.Correo;
+
+                    // Seleccionar la especialidad correspondiente.
+                    if (doctor.IdEspecialidad.HasValue)
+                    {
+                        cmbEspecialidad.SelectedValue =
+                            doctor.IdEspecialidad.Value;
+                    }
+                    else
+                    {
+                        cmbEspecialidad.SelectedIndex = -1;
+                    }
                 }
             }
         }
 
+        // MODIFICAR DOCTOR
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             try
@@ -103,6 +153,12 @@ namespace Presentacion.Presentacion
                 if (dgvDoctores.CurrentRow == null)
                 {
                     MessageBox.Show("Primero debes seleccionar un doctor.");
+                    return;
+                }
+
+                if (cmbEspecialidad.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Debes seleccionar una especialidad.");
                     return;
                 }
 
@@ -120,7 +176,9 @@ namespace Presentacion.Presentacion
                 doctor.IdDoctor = doctorSeleccionado.IdDoctor;
                 doctor.Nombre = txtnombre1.Text;
                 doctor.Apellidos = txtapellidos2.Text;
-                doctor.Especialidad = txtespecialidad3.Text;
+                doctor.Identificacion = txtidentificacion6.Text;
+                doctor.IdEspecialidad =
+                    Convert.ToInt32(cmbEspecialidad.SelectedValue);
                 doctor.Telefono = txttelefono4.Text;
                 doctor.Correo = txtcorreo5.Text;
 
@@ -132,6 +190,8 @@ namespace Presentacion.Presentacion
 
                     dgvDoctores.DataSource = null;
                     dgvDoctores.DataSource = doctorBLL.ListarDoctores();
+
+                    LimpiarCampos();
                 }
                 else
                 {
@@ -144,6 +204,7 @@ namespace Presentacion.Presentacion
             }
         }
 
+        // ELIMINAR DOCTOR
         private void btneliminar_Click(object sender, EventArgs e)
         {
             try
@@ -181,11 +242,7 @@ namespace Presentacion.Presentacion
                         dgvDoctores.DataSource = null;
                         dgvDoctores.DataSource = doctorBLL.ListarDoctores();
 
-                        txtnombre1.Clear();
-                        txtapellidos2.Clear();
-                        txtespecialidad3.Clear();
-                        txttelefono4.Clear();
-                        txtcorreo5.Clear();
+                        LimpiarCampos();
                     }
                     else
                     {

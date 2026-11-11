@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Modelos\Cita.cs" />
     <Compile Include="Modelos\Doctor.cs" />
+    <Compile Include="Modelos\Especialidad.cs" />
+    <Compile Include="Modelos\HorarioMedico.cs" />
     <Compile Include="Modelos\Paciente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

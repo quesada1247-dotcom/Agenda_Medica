@@ -95,6 +95,8 @@
     <Compile Include="Conexion\ConexionBD.cs" />
     <Compile Include="Datos\CitaDAL.cs" />
     <Compile Include="Datos\DoctorDAL.cs" />
+    <Compile Include="Datos\EspecialidadDAL.cs" />
+    <Compile Include="Datos\HorarioMedicoDAL.cs" />
     <Compile Include="Datos\PacienteDAL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
