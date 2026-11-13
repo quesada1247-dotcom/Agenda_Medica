@@ -168,5 +168,43 @@ namespace AccesoDatos.Datos
                 }
             }
         }
+
+        // VERIFICAR SI EXISTE UN HORARIO CRUZADO.
+        public bool ExisteCruceHorario(
+            int idDoctor,
+            string diaSemana,
+            TimeSpan horaInicio,
+            TimeSpan horaFin,
+            int idHorarioExcluir = 0)
+        {
+            string consulta = @"
+                SELECT COUNT(*)
+                FROM HorariosMedicos
+                WHERE id_doctor = @idDoctor
+                AND dia_semana = @diaSemana
+                AND estado = 1
+                AND hora_inicio < @horaFin
+                AND hora_fin > @horaInicio
+                AND id_horario <> @idHorarioExcluir";
+
+            using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+            {
+                conexion.Open();
+                using (MySqlCommand comando =
+                    new MySqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@idDoctor", idDoctor);
+                    comando.Parameters.AddWithValue("@diaSemana", diaSemana);
+                    comando.Parameters.AddWithValue("@horaInicio", horaInicio);
+                    comando.Parameters.AddWithValue("@horaFin", horaFin);
+                    comando.Parameters.AddWithValue(
+                        "@idHorarioExcluir", idHorarioExcluir);
+
+                    int cantidad = Convert.ToInt32(comando.ExecuteScalar());
+
+                    return cantidad > 0;
+                }
+            }
+        }
     }
 }

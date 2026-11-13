@@ -17,8 +17,29 @@ namespace Presentacion.Presentacion
         {
             InitializeComponent();
             CargarListas();
+            CargarTiposYDuraciones();
         }
 
+        private void CargarTiposYDuraciones()
+        {
+            // Cargar los tipos de cita.
+            cmbTipoCita.Items.Clear();
+            cmbTipoCita.Items.Add("Presencial");
+            cmbTipoCita.Items.Add("Virtual");
+            cmbTipoCita.Items.Add("Urgencia");
+
+            cmbTipoCita.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoCita.SelectedIndex = 0;
+
+            // Cargar las duraciones.
+            cmbDuracion.Items.Clear();
+            cmbDuracion.Items.Add(30);
+            cmbDuracion.Items.Add(45);
+            cmbDuracion.Items.Add(60);
+
+            cmbDuracion.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbDuracion.SelectedIndex = 0;
+        }
         // AQUÍ VAN LOS DOS ATRIBUTOS Y EL MÉTODO
         private void CargarListas()
         {
@@ -49,6 +70,8 @@ namespace Presentacion.Presentacion
         cita.Fecha = dtpFecha.Value.Date;
         cita.Hora = dtpHora.Value.TimeOfDay;
         cita.Motivo = txtmotivo1.Text;
+        cita.Tipo = cmbTipoCita.SelectedItem.ToString();
+        cita.DuracionMinutos = Convert.ToInt32(cmbDuracion.SelectedItem);
         cita.Estado = "Programada";
 
         bool registrado = citaBLL.RegistrarCita(cita);
@@ -124,6 +147,13 @@ namespace Presentacion.Presentacion
 
                 // Carga el motivo de la cita.
                 txtmotivo1.Text = fila.Cells["Motivo"].Value.ToString();
+
+                // Cargar el tipo de cita.
+                cmbTipoCita.SelectedItem = fila.Cells["Tipo"].Value.ToString();
+
+                // Cargar la duración.
+                cmbDuracion.SelectedItem = Convert.ToInt32(
+                    fila.Cells["DuracionMinutos"].Value);
             }
         }
 
@@ -148,6 +178,8 @@ namespace Presentacion.Presentacion
                 cita.Fecha = dtpFecha.Value.Date;
                 cita.Hora = dtpHora.Value.TimeOfDay;
                 cita.Motivo = txtmotivo1.Text;
+                cita.Tipo = cmbTipoCita.SelectedItem.ToString();
+                cita.DuracionMinutos = Convert.ToInt32(cmbDuracion.SelectedItem);
                 cita.Estado = "Programada";
 
                 // Envía los cambios a la base de datos.

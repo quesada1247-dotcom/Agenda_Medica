@@ -40,10 +40,36 @@ namespace LogicaNegocio.Servicios
                     "La hora de inicio debe ser anterior a la hora de finalización.");
         }
 
+        // VERIFICAR SI EL HORARIO SE CRUZA CON OTRO.
+        private void ValidarCruceHorario(
+            HorarioMedico horario,
+            int idHorarioExcluir = 0)
+        {
+            // Solo se verifican los horarios activos.
+            if (!horario.Estado)
+                return;
+
+            bool existeCruce = horarioDAL.ExisteCruceHorario(
+                horario.IdDoctor,
+                horario.DiaSemana,
+                horario.HoraInicio,
+                horario.HoraFin,
+                idHorarioExcluir);
+
+            if (existeCruce)
+            {
+                throw new ArgumentException(
+                    "El doctor ya tiene un horario registrado que se cruza con este horario.");
+            }
+        }
+
         // REGISTRAR UN HORARIO MÉDICO.
         public bool RegistrarHorario(HorarioMedico horario)
         {
             ValidarHorario(horario);
+
+            // Verificar que no existan horarios cruzados.
+            ValidarCruceHorario(horario);
 
             return horarioDAL.Insertar(horario);
         }
@@ -55,9 +81,13 @@ namespace LogicaNegocio.Servicios
                 throw new ArgumentNullException(nameof(horario));
 
             if (horario.IdHorario <= 0)
-                throw new ArgumentException("El horario seleccionado no es válido.");
+                throw new ArgumentException(
+                    "El horario seleccionado no es válido.");
 
             ValidarHorario(horario);
+
+            // Excluir el horario actual para evitar compararlo consigo mismo.
+            ValidarCruceHorario(horario, horario.IdHorario);
 
             return horarioDAL.Actualizar(horario);
         }
@@ -66,7 +96,8 @@ namespace LogicaNegocio.Servicios
         public bool EliminarHorario(int idHorario)
         {
             if (idHorario <= 0)
-                throw new ArgumentException("El identificador del horario no es válido.");
+                throw new ArgumentException(
+                    "El identificador del horario no es válido.");
 
             return horarioDAL.Eliminar(idHorario);
         }

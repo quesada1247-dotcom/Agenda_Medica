@@ -7,6 +7,29 @@ namespace LogicaNegocio.Servicios
 {
     public class CitaBLL
     {
+        private string ObtenerDiaSemana(DateTime fecha)
+        {
+            switch (fecha.DayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    return "Lunes";
+                case DayOfWeek.Tuesday:
+                    return "Martes";
+                case DayOfWeek.Wednesday:
+                    return "Miercoles";
+                case DayOfWeek.Thursday:
+                    return "Jueves";
+                case DayOfWeek.Friday:
+                    return "Viernes";
+                case DayOfWeek.Saturday:
+                    return "Sabado";
+                case DayOfWeek.Sunday:
+                    return "Domingo";
+                default:
+                    throw new ArgumentException("Día de la semana no válido.");
+            }
+        }
+
         private readonly CitaDAL citaDAL = new CitaDAL();
 
         // VALIDAR LOS DATOS DE LA CITA
@@ -54,7 +77,20 @@ namespace LogicaNegocio.Servicios
         {
             ValidarCita(cita);
 
-            // Verificar que el doctor no tenga otra cita en ese horario
+            string diaSemana = ObtenerDiaSemana(cita.Fecha);
+
+            // Verificar que la cita esté dentro del horario del doctor.
+            if (!citaDAL.EstaDentroDelHorario(
+                cita.IdDoctor,
+                diaSemana,
+                cita.Hora,
+                cita.DuracionMinutos))
+            {
+                throw new ArgumentException(
+                    "La cita no está dentro del horario disponible del doctor.");
+            }
+
+            // Verificar que el doctor no tenga otra cita en ese horario.
             if (citaDAL.TieneCruceHorario(
                 cita.IdDoctor,
                 cita.Fecha,
@@ -63,6 +99,17 @@ namespace LogicaNegocio.Servicios
             {
                 throw new ArgumentException(
                     "El doctor ya tiene otra cita en ese horario.");
+            }
+
+            // Verificar que el paciente no tenga otra cita simultánea.
+            if (citaDAL.PacienteTieneCruceHorario(
+                cita.IdPaciente,
+                cita.Fecha,
+                cita.Hora,
+                cita.DuracionMinutos))
+            {
+                throw new ArgumentException(
+                    "El paciente ya tiene otra cita en ese horario.");
             }
 
             cita.Estado = "Programada";

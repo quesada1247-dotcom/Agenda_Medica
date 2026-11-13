@@ -44,6 +44,10 @@
             this.dgvCitas = new System.Windows.Forms.DataGridView();
             this.btnModificarCita = new System.Windows.Forms.Button();
             this.btnEliminarCita = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbTipoCita = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbDuracion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +63,7 @@
             // txtpaciente
             // 
             this.txtpaciente.AutoSize = true;
-            this.txtpaciente.Location = new System.Drawing.Point(50, 63);
+            this.txtpaciente.Location = new System.Drawing.Point(12, 63);
             this.txtpaciente.Name = "txtpaciente";
             this.txtpaciente.Size = new System.Drawing.Size(49, 13);
             this.txtpaciente.TabIndex = 1;
@@ -68,7 +72,7 @@
             // cmbPaciente
             // 
             this.cmbPaciente.FormattingEnabled = true;
-            this.cmbPaciente.Location = new System.Drawing.Point(53, 79);
+            this.cmbPaciente.Location = new System.Drawing.Point(14, 79);
             this.cmbPaciente.Name = "cmbPaciente";
             this.cmbPaciente.Size = new System.Drawing.Size(121, 21);
             this.cmbPaciente.TabIndex = 2;
@@ -76,7 +80,7 @@
             // txtdoctor
             // 
             this.txtdoctor.AutoSize = true;
-            this.txtdoctor.Location = new System.Drawing.Point(50, 114);
+            this.txtdoctor.Location = new System.Drawing.Point(12, 114);
             this.txtdoctor.Name = "txtdoctor";
             this.txtdoctor.Size = new System.Drawing.Size(39, 13);
             this.txtdoctor.TabIndex = 3;
@@ -85,7 +89,7 @@
             // cmbDoctor
             // 
             this.cmbDoctor.FormattingEnabled = true;
-            this.cmbDoctor.Location = new System.Drawing.Point(53, 130);
+            this.cmbDoctor.Location = new System.Drawing.Point(15, 130);
             this.cmbDoctor.Name = "cmbDoctor";
             this.cmbDoctor.Size = new System.Drawing.Size(121, 21);
             this.cmbDoctor.TabIndex = 4;
@@ -93,7 +97,7 @@
             // txtfecha
             // 
             this.txtfecha.AutoSize = true;
-            this.txtfecha.Location = new System.Drawing.Point(50, 164);
+            this.txtfecha.Location = new System.Drawing.Point(12, 164);
             this.txtfecha.Name = "txtfecha";
             this.txtfecha.Size = new System.Drawing.Size(37, 13);
             this.txtfecha.TabIndex = 5;
@@ -102,7 +106,7 @@
             // dtpFecha
             // 
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(53, 180);
+            this.dtpFecha.Location = new System.Drawing.Point(15, 180);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(118, 20);
             this.dtpFecha.TabIndex = 6;
@@ -110,7 +114,7 @@
             // txthora
             // 
             this.txthora.AutoSize = true;
-            this.txthora.Location = new System.Drawing.Point(50, 212);
+            this.txthora.Location = new System.Drawing.Point(12, 212);
             this.txthora.Name = "txthora";
             this.txthora.Size = new System.Drawing.Size(30, 13);
             this.txthora.TabIndex = 7;
@@ -119,7 +123,7 @@
             // dtpHora
             // 
             this.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpHora.Location = new System.Drawing.Point(53, 228);
+            this.dtpHora.Location = new System.Drawing.Point(17, 228);
             this.dtpHora.Name = "dtpHora";
             this.dtpHora.ShowUpDown = true;
             this.dtpHora.Size = new System.Drawing.Size(118, 20);
@@ -128,7 +132,7 @@
             // txtmotivo
             // 
             this.txtmotivo.AutoSize = true;
-            this.txtmotivo.Location = new System.Drawing.Point(50, 264);
+            this.txtmotivo.Location = new System.Drawing.Point(14, 264);
             this.txtmotivo.Name = "txtmotivo";
             this.txtmotivo.Size = new System.Drawing.Size(39, 13);
             this.txtmotivo.TabIndex = 9;
@@ -136,7 +140,7 @@
             // 
             // txtmotivo1
             // 
-            this.txtmotivo1.Location = new System.Drawing.Point(53, 280);
+            this.txtmotivo1.Location = new System.Drawing.Point(14, 280);
             this.txtmotivo1.Name = "txtmotivo1";
             this.txtmotivo1.Size = new System.Drawing.Size(118, 20);
             this.txtmotivo1.TabIndex = 10;
@@ -190,11 +194,49 @@
             this.btnEliminarCita.UseVisualStyleBackColor = true;
             this.btnEliminarCita.Click += new System.EventHandler(this.btnEliminarCita_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(209, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Tipo de cita";
+            // 
+            // cmbTipoCita
+            // 
+            this.cmbTipoCita.FormattingEnabled = true;
+            this.cmbTipoCita.Location = new System.Drawing.Point(212, 79);
+            this.cmbTipoCita.Name = "cmbTipoCita";
+            this.cmbTipoCita.Size = new System.Drawing.Size(121, 21);
+            this.cmbTipoCita.TabIndex = 17;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(209, 114);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 13);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Duración (minutos)";
+            // 
+            // cmbDuracion
+            // 
+            this.cmbDuracion.FormattingEnabled = true;
+            this.cmbDuracion.Location = new System.Drawing.Point(212, 130);
+            this.cmbDuracion.Name = "cmbDuracion";
+            this.cmbDuracion.Size = new System.Drawing.Size(121, 21);
+            this.cmbDuracion.TabIndex = 19;
+            // 
             // FrmCitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 564);
+            this.Controls.Add(this.cmbDuracion);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbTipoCita);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnEliminarCita);
             this.Controls.Add(this.btnModificarCita);
             this.Controls.Add(this.dgvCitas);
@@ -237,5 +279,9 @@
         private System.Windows.Forms.DataGridView dgvCitas;
         private System.Windows.Forms.Button btnModificarCita;
         private System.Windows.Forms.Button btnEliminarCita;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbTipoCita;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbDuracion;
     }
 }

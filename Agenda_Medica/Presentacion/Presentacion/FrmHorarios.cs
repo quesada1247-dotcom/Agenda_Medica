@@ -22,6 +22,7 @@ namespace Presentacion.Presentacion
 
             CargarDoctores();
             CargarDias();
+            CargarHorarios();
 
             // Conectar el botón Consultar.
             btnConsultar.Click += btnConsultar_Click;
@@ -31,6 +32,9 @@ namespace Presentacion.Presentacion
             btnModificar.Click += btnModificar_Click;
             // Conectar el botón Eliminar.
             btnEliminar.Click += btnEliminar_Click;
+
+            // Conectar la selección de filas de la tabla.
+            dgvHorarios.CellClick += dgvHorarios_CellClick;
 
             // Configurar la tabla.
             dgvHorarios.AutoGenerateColumns = true;

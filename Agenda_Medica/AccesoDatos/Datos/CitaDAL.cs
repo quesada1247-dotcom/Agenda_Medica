@@ -230,5 +230,85 @@ namespace AccesoDatos.Datos
                 }
             }
         }
+
+        // VERIFICAR QUE LA CITA ESTE DENTRO DEL HORARIO DEL DOCTOR
+        public bool EstaDentroDelHorario(
+            int idDoctor,
+            string diaSemana,
+            TimeSpan horaInicio,
+            int duracionMinutos)
+        {
+            string consulta = @"
+        SELECT COUNT(*)
+        FROM HorariosMedicos
+        WHERE id_doctor = @idDoctor
+        AND dia_semana = @diaSemana
+        AND estado = 1
+        AND hora_inicio <= @horaInicio
+        AND hora_fin >= ADDTIME(@horaInicio, SEC_TO_TIME(@duracion * 60))";
+
+            using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+            {
+                conexion.Open();
+
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@idDoctor", idDoctor);
+                    comando.Parameters.AddWithValue("@diaSemana", diaSemana);
+                    comando.Parameters.AddWithValue("@horaInicio", horaInicio);
+                    comando.Parameters.AddWithValue("@duracion", duracionMinutos);
+
+                    int cantidad = Convert.ToInt32(comando.ExecuteScalar());
+
+                    return cantidad > 0;
+                }
+            }
+        }
+
+        // VERIFICAR SI EL PACIENTE TIENE OTRA CITA EN EL MISMO HORARIO
+        public bool PacienteTieneCruceHorario(
+            int idPaciente,
+            DateTime fecha,
+            TimeSpan horaInicio,
+            int duracionMinutos,
+            int? idCitaExcluir = null)
+        {
+            string consulta = @"
+        SELECT COUNT(*)
+        FROM Citas
+        WHERE id_paciente = @idPaciente
+        AND fecha = @fecha
+        AND estado NOT IN ('Cancelada', 'No asistio')
+        AND hora < ADDTIME(@hora, SEC_TO_TIME(@duracion * 60))
+        AND hora_fin > @hora";
+
+            if (idCitaExcluir.HasValue)
+            {
+                consulta += " AND id_cita <> @idCita";
+            }
+
+            using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+            {
+                conexion.Open();
+
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@idPaciente", idPaciente);
+                    comando.Parameters.AddWithValue("@fecha", fecha.Date);
+                    comando.Parameters.AddWithValue("@hora", horaInicio);
+                    comando.Parameters.AddWithValue("@duracion", duracionMinutos);
+
+                    if (idCitaExcluir.HasValue)
+                    {
+                        comando.Parameters.AddWithValue(
+                            "@idCita", idCitaExcluir.Value);
+                    }
+
+                    int cantidad = Convert.ToInt32(comando.ExecuteScalar());
+
+                    return cantidad > 0;
+                }
+            }
+        }
     }
 }
