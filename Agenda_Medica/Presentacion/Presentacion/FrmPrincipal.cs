@@ -40,5 +40,11 @@ namespace Presentacion.Presentacion
             FrmHorarios formulario = new FrmHorarios();
             formulario.ShowDialog();
         }
+
+        private void btnEspecialidades_Click(object sender, EventArgs e)
+        {
+            FrmEspecialidades formulario = new FrmEspecialidades();
+            formulario.ShowDialog();
+        }
     }
 }

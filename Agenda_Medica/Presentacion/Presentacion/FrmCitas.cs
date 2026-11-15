@@ -114,6 +114,8 @@ namespace Presentacion.Presentacion
                 dgvCitas.Columns["Fecha"].HeaderText = "Fecha";
                 dgvCitas.Columns["Hora"].HeaderText = "Hora";
                 dgvCitas.Columns["Motivo"].HeaderText = "Motivo";
+                dgvCitas.Columns["Tipo"].HeaderText = "Tipo de cita";
+                dgvCitas.Columns["DuracionMinutos"].HeaderText = "Duración (minutos)";
                 dgvCitas.Columns["Estado"].HeaderText = "Estado";
 
                 if (dgvCitas.Rows.Count == 0)

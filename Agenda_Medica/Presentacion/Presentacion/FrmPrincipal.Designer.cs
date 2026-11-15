@@ -41,6 +41,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnHorarios = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnEspecialidades = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txttitulo
@@ -164,11 +165,22 @@
             this.label8.TabIndex = 12;
             this.label8.Text = "Gestionar disponibilidad de los doctores.";
             // 
+            // btnEspecialidades
+            // 
+            this.btnEspecialidades.Location = new System.Drawing.Point(7, 306);
+            this.btnEspecialidades.Name = "btnEspecialidades";
+            this.btnEspecialidades.Size = new System.Drawing.Size(224, 24);
+            this.btnEspecialidades.TabIndex = 13;
+            this.btnEspecialidades.Text = "GESTIONAR ESPECIALIDADES";
+            this.btnEspecialidades.UseVisualStyleBackColor = true;
+            this.btnEspecialidades.Click += new System.EventHandler(this.btnEspecialidades_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(322, 441);
+            this.Controls.Add(this.btnEspecialidades);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnHorarios);
             this.Controls.Add(this.label7);
@@ -204,5 +216,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnHorarios;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnEspecialidades;
     }
 }

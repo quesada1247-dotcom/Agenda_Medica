@@ -123,6 +123,7 @@ namespace LogicaNegocio.Servicios
             return citaDAL.ObtenerTodos();
         }
 
+       
         // MODIFICAR CITA
         public bool ModificarCita(Cita cita)
         {
@@ -133,18 +134,31 @@ namespace LogicaNegocio.Servicios
 
             string[] estadosPermitidos =
             {
-        "Programada",
-        "Confirmada",
-        "Atendida",
-        "Cancelada",
-        "No asistio",
-        "Reprogramada"
-    };
+                "Programada",
+                "Confirmada",
+                "Atendida",
+                "Cancelada",
+                "No asistio",
+                "Reprogramada"
+            };
 
             if (Array.IndexOf(estadosPermitidos, cita.Estado) < 0)
                 throw new ArgumentException("El estado de la cita no es válido.");
 
-            // Verificar que el doctor no tenga otra cita en ese horario.
+            string diaSemana = ObtenerDiaSemana(cita.Fecha);
+
+            // Verificar que la cita esté dentro del horario del doctor.
+            if (!citaDAL.EstaDentroDelHorario(
+                cita.IdDoctor,
+                diaSemana,
+                cita.Hora,
+                cita.DuracionMinutos))
+            {
+                throw new ArgumentException(
+                    "La cita no está dentro del horario disponible del doctor.");
+            }
+
+            // Verificar que el doctor no tenga otra cita cruzada.
             // Se excluye la cita que estamos modificando.
             if (citaDAL.TieneCruceHorario(
                 cita.IdDoctor,
@@ -155,6 +169,19 @@ namespace LogicaNegocio.Servicios
             {
                 throw new ArgumentException(
                     "El doctor ya tiene otra cita en ese horario.");
+            }
+
+            // Verificar que el paciente no tenga otra cita simultánea.
+            // También se excluye la cita actual.
+            if (citaDAL.PacienteTieneCruceHorario(
+                cita.IdPaciente,
+                cita.Fecha,
+                cita.Hora,
+                cita.DuracionMinutos,
+                cita.IdCita))
+            {
+                throw new ArgumentException(
+                    "El paciente ya tiene otra cita en ese horario.");
             }
 
             return citaDAL.Actualizar(cita);
