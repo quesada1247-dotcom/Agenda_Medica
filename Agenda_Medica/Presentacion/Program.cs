@@ -23,8 +23,9 @@ namespace Presentacion
             //Application.Run(new FrmDoctores());
             //Application.Run(new FrmCitas());
             //Application.Run(new FrmHorarios());
-            Application.Run(new FrmPrincipal());
+           //Application.Run(new FrmPrincipal());
             //Application.Run(new FrmEspecialidades());
+            Application.Run(new FrmHistorialMedico());
         }
     }
 }

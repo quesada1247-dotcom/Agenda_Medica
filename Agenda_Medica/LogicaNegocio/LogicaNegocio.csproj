@@ -51,6 +51,7 @@
     <Compile Include="Servicios\CitaBLL.cs" />
     <Compile Include="Servicios\DoctorBLL.cs" />
     <Compile Include="Servicios\EspecialidadBLL.cs" />
+    <Compile Include="Servicios\HistorialMedicoBLL.cs" />
     <Compile Include="Servicios\HorarioMedicoBLL.cs" />
     <Compile Include="Servicios\PacienteBLL.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

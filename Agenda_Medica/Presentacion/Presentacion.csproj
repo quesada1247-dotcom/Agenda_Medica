@@ -66,6 +66,12 @@
     <Compile Include="Presentacion\FrmEspecialidades.Designer.cs">
       <DependentUpon>FrmEspecialidades.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\FrmHistorialMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FrmHistorialMedico.Designer.cs">
+      <DependentUpon>FrmHistorialMedico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\FrmHorarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FrmEspecialidades.resx">
       <DependentUpon>FrmEspecialidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\FrmHistorialMedico.resx">
+      <DependentUpon>FrmHistorialMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FrmHorarios.resx">
       <DependentUpon>FrmHorarios.cs</DependentUpon>

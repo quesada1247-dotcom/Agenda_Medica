@@ -96,6 +96,7 @@
     <Compile Include="Datos\CitaDAL.cs" />
     <Compile Include="Datos\DoctorDAL.cs" />
     <Compile Include="Datos\EspecialidadDAL.cs" />
+    <Compile Include="Datos\HistorialMedicoDAL.cs" />
     <Compile Include="Datos\HorarioMedicoDAL.cs" />
     <Compile Include="Datos\PacienteDAL.cs" />
     <Compile Include="Program.cs" />
