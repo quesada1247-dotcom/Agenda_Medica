@@ -43,6 +43,7 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.dgvAgenda = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
+            this.chkFiltrarFecha = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,7 +113,7 @@
             // dtpFecha
             // 
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(236, 176);
+            this.dtpFecha.Location = new System.Drawing.Point(246, 176);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(117, 20);
             this.dtpFecha.TabIndex = 7;
@@ -120,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(233, 159);
+            this.label5.Location = new System.Drawing.Point(243, 159);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 8;
@@ -129,7 +130,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(233, 213);
+            this.label6.Location = new System.Drawing.Point(243, 213);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 13);
             this.label6.TabIndex = 9;
@@ -139,7 +140,7 @@
             // 
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(232, 230);
+            this.cmbEstado.Location = new System.Drawing.Point(246, 230);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(121, 21);
             this.cmbEstado.TabIndex = 10;
@@ -152,6 +153,7 @@
             this.btnBuscar.TabIndex = 11;
             this.btnBuscar.Text = "Buscar citas";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnLimpiar
             // 
@@ -161,6 +163,7 @@
             this.btnLimpiar.TabIndex = 12;
             this.btnLimpiar.Text = "Limpiar filtros";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // dgvAgenda
             // 
@@ -184,11 +187,22 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Resultados:";
             // 
+            // chkFiltrarFecha
+            // 
+            this.chkFiltrarFecha.AutoSize = true;
+            this.chkFiltrarFecha.Location = new System.Drawing.Point(124, 202);
+            this.chkFiltrarFecha.Name = "chkFiltrarFecha";
+            this.chkFiltrarFecha.Size = new System.Drawing.Size(99, 17);
+            this.chkFiltrarFecha.TabIndex = 15;
+            this.chkFiltrarFecha.Text = "Filtrar por fecha";
+            this.chkFiltrarFecha.UseVisualStyleBackColor = true;
+            // 
             // FrmAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(395, 554);
+            this.Controls.Add(this.chkFiltrarFecha);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dgvAgenda);
             this.Controls.Add(this.btnLimpiar);
@@ -230,5 +244,6 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.DataGridView dgvAgenda;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox chkFiltrarFecha;
     }
 }
