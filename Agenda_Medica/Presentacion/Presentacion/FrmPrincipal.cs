@@ -52,5 +52,12 @@ namespace Presentacion.Presentacion
             FrmHistorialMedico formulario = new FrmHistorialMedico();
             formulario.ShowDialog();
         }
+
+        private void btnAgenda_Click(object sender, EventArgs e)
+        {
+            FrmAgenda formulario = new FrmAgenda();
+            formulario.ShowDialog();
+
+        }
     }
 }

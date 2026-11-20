@@ -49,6 +49,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnAgenda = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txttitulo
@@ -246,11 +247,22 @@
             this.label14.TabIndex = 24;
             this.label14.Text = "Especialidades · Historial médico";
             // 
+            // btnAgenda
+            // 
+            this.btnAgenda.Location = new System.Drawing.Point(301, 378);
+            this.btnAgenda.Name = "btnAgenda";
+            this.btnAgenda.Size = new System.Drawing.Size(124, 27);
+            this.btnAgenda.TabIndex = 25;
+            this.btnAgenda.Text = "AGENDA MÉDICA";
+            this.btnAgenda.UseVisualStyleBackColor = true;
+            this.btnAgenda.Click += new System.EventHandler(this.btnAgenda_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(601, 485);
+            this.Controls.Add(this.btnAgenda);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -302,5 +314,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnAgenda;
     }
 }
