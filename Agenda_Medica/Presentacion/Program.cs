@@ -19,13 +19,13 @@ namespace Presentacion
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Application.Run(new FrmPacientes());
-            //Application.Run(new FrmDoctores());
-            //Application.Run(new FrmCitas());
-            //Application.Run(new FrmHorarios());
-           //Application.Run(new FrmPrincipal());
-            //Application.Run(new FrmEspecialidades());
-            Application.Run(new FrmHistorialMedico());
+           //Application.Run(new FrmPacientes());
+           //Application.Run(new FrmDoctores());
+           //Application.Run(new FrmCitas());
+           //Application.Run(new FrmHorarios());
+           Application.Run(new FrmPrincipal());
+           //Application.Run(new FrmEspecialidades());
+           //Application.Run(new FrmHistorialMedico());
         }
     }
 }
