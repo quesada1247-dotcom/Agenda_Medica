@@ -123,7 +123,24 @@ namespace LogicaNegocio.Servicios
             return citaDAL.ObtenerTodos();
         }
 
-       
+        // ==========================================
+        // FILTRAR CITAS DE LA AGENDA MÉDICA
+        // ==========================================
+        public List<Cita> FiltrarCitas(
+            int? idDoctor,
+            DateTime? fecha,
+            int? idPaciente,
+            string estado)
+        {
+            return citaDAL.FiltrarCitas(
+                idDoctor,
+                fecha,
+                idPaciente,
+                estado
+            );
+        }
+
+
         // MODIFICAR CITA
         public bool ModificarCita(Cita cita)
         {

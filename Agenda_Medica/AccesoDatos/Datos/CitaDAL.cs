@@ -118,6 +118,118 @@ namespace AccesoDatos.Datos
             return lista;
         }
 
+        // ==========================================
+        // FILTRAR CITAS PARA LA AGENDA MÉDICA
+        // ==========================================
+        public List<Cita> FiltrarCitas(
+            int? idDoctor,
+            DateTime? fecha,
+            int? idPaciente,
+            string estado)
+        {
+            List<Cita> lista = new List<Cita>();
+
+            // Consulta principal con los datos del paciente y doctor
+            string consulta = @"
+        SELECT
+            c.id_cita,
+            c.id_paciente,
+            c.id_doctor,
+            c.id_usuario,
+            p.nombre AS NombrePaciente,
+            d.nombre AS NombreDoctor,
+            c.fecha,
+            c.hora,
+            c.hora_fin,
+            c.duracion_minutos,
+            c.tipo,
+            c.motivo,
+            c.estado,
+            c.observaciones
+        FROM Citas c
+        INNER JOIN Pacientes p
+            ON c.id_paciente = p.id_paciente
+        INNER JOIN Doctores d
+            ON c.id_doctor = d.id_doctor
+        WHERE 1 = 1";
+
+            // Agregar filtros solamente cuando se hayan seleccionado
+            if (idDoctor.HasValue)
+                consulta += " AND c.id_doctor = @idDoctor";
+
+            if (fecha.HasValue)
+                consulta += " AND c.fecha = @fecha";
+
+            if (idPaciente.HasValue)
+                consulta += " AND c.id_paciente = @idPaciente";
+
+            if (!string.IsNullOrWhiteSpace(estado))
+                consulta += " AND c.estado = @estado";
+
+            consulta += " ORDER BY c.fecha, c.hora";
+
+            using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+            {
+                conexion.Open();
+
+                using (MySqlCommand comando =
+                    new MySqlCommand(consulta, conexion))
+                {
+                    // Parámetros de búsqueda
+                    if (idDoctor.HasValue)
+                        comando.Parameters.AddWithValue("@idDoctor", idDoctor.Value);
+
+                    if (fecha.HasValue)
+                        comando.Parameters.AddWithValue("@fecha", fecha.Value.Date);
+
+                    if (idPaciente.HasValue)
+                        comando.Parameters.AddWithValue("@idPaciente", idPaciente.Value);
+
+                    if (!string.IsNullOrWhiteSpace(estado))
+                        comando.Parameters.AddWithValue("@estado", estado);
+
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            Cita cita = new Cita();
+
+                            cita.IdCita = Convert.ToInt32(lector["id_cita"]);
+                            cita.IdPaciente = Convert.ToInt32(lector["id_paciente"]);
+                            cita.IdDoctor = Convert.ToInt32(lector["id_doctor"]);
+
+                            cita.IdUsuario = lector["id_usuario"] == DBNull.Value
+                                ? (int?)null
+                                : Convert.ToInt32(lector["id_usuario"]);
+
+                            cita.NombrePaciente = lector["NombrePaciente"].ToString();
+                            cita.NombreDoctor = lector["NombreDoctor"].ToString();
+
+                            cita.Fecha = Convert.ToDateTime(lector["fecha"]);
+                            cita.Hora = (TimeSpan)lector["hora"];
+                            cita.HoraFin = (TimeSpan)lector["hora_fin"];
+
+                            cita.DuracionMinutos =
+                                Convert.ToInt32(lector["duracion_minutos"]);
+
+                            cita.Tipo = lector["tipo"].ToString();
+                            cita.Motivo = lector["motivo"].ToString();
+                            cita.Estado = lector["estado"].ToString();
+
+                            cita.Observaciones =
+                                lector["observaciones"] == DBNull.Value
+                                ? ""
+                                : lector["observaciones"].ToString();
+
+                            lista.Add(cita);
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
+
         // MODIFICAR CITA
         public bool Actualizar(Cita cita)
         {
