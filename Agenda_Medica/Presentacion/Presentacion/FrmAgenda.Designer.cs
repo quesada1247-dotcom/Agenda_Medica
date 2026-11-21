@@ -59,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 67);
+            this.label2.Location = new System.Drawing.Point(51, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(162, 13);
             this.label2.TabIndex = 1;
@@ -68,7 +68,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 123);
+            this.label3.Location = new System.Drawing.Point(124, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 13);
             this.label3.TabIndex = 2;
@@ -77,7 +77,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 159);
+            this.label4.Location = new System.Drawing.Point(57, 156);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 3;
@@ -87,7 +87,7 @@
             // 
             this.cmbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDoctor.FormattingEnabled = true;
-            this.cmbDoctor.Location = new System.Drawing.Point(12, 175);
+            this.cmbDoctor.Location = new System.Drawing.Point(60, 171);
             this.cmbDoctor.Name = "cmbDoctor";
             this.cmbDoctor.Size = new System.Drawing.Size(121, 21);
             this.cmbDoctor.TabIndex = 4;
@@ -95,7 +95,7 @@
             // Paciente
             // 
             this.Paciente.AutoSize = true;
-            this.Paciente.Location = new System.Drawing.Point(12, 213);
+            this.Paciente.Location = new System.Drawing.Point(67, 213);
             this.Paciente.Name = "Paciente";
             this.Paciente.Size = new System.Drawing.Size(49, 13);
             this.Paciente.TabIndex = 5;
@@ -105,7 +105,7 @@
             // 
             this.cmbPaciente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPaciente.FormattingEnabled = true;
-            this.cmbPaciente.Location = new System.Drawing.Point(15, 230);
+            this.cmbPaciente.Location = new System.Drawing.Point(60, 230);
             this.cmbPaciente.Name = "cmbPaciente";
             this.cmbPaciente.Size = new System.Drawing.Size(121, 21);
             this.cmbPaciente.TabIndex = 6;
@@ -113,7 +113,7 @@
             // dtpFecha
             // 
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(246, 176);
+            this.dtpFecha.Location = new System.Drawing.Point(320, 172);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(117, 20);
             this.dtpFecha.TabIndex = 7;
@@ -121,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(243, 159);
+            this.label5.Location = new System.Drawing.Point(317, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 8;
@@ -130,7 +130,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(243, 213);
+            this.label6.Location = new System.Drawing.Point(317, 213);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 13);
             this.label6.TabIndex = 9;
@@ -140,14 +140,14 @@
             // 
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(246, 230);
+            this.cmbEstado.Location = new System.Drawing.Point(320, 230);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(121, 21);
             this.cmbEstado.TabIndex = 10;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(82, 270);
+            this.btnBuscar.Location = new System.Drawing.Point(145, 279);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(81, 23);
             this.btnBuscar.TabIndex = 11;
@@ -157,7 +157,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(184, 270);
+            this.btnLimpiar.Location = new System.Drawing.Point(287, 279);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(86, 23);
             this.btnLimpiar.TabIndex = 12;
@@ -175,7 +175,7 @@
             this.dgvAgenda.Name = "dgvAgenda";
             this.dgvAgenda.ReadOnly = true;
             this.dgvAgenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAgenda.Size = new System.Drawing.Size(386, 225);
+            this.dgvAgenda.Size = new System.Drawing.Size(520, 225);
             this.dgvAgenda.TabIndex = 13;
             // 
             // label7
@@ -190,7 +190,7 @@
             // chkFiltrarFecha
             // 
             this.chkFiltrarFecha.AutoSize = true;
-            this.chkFiltrarFecha.Location = new System.Drawing.Point(124, 202);
+            this.chkFiltrarFecha.Location = new System.Drawing.Point(184, 199);
             this.chkFiltrarFecha.Name = "chkFiltrarFecha";
             this.chkFiltrarFecha.Size = new System.Drawing.Size(99, 17);
             this.chkFiltrarFecha.TabIndex = 15;
@@ -201,7 +201,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 554);
+            this.ClientSize = new System.Drawing.Size(530, 554);
             this.Controls.Add(this.chkFiltrarFecha);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dgvAgenda);

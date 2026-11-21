@@ -43,9 +43,35 @@ namespace Presentacion.Presentacion
             dgvAgenda.AutoGenerateColumns = true;
             dgvAgenda.ReadOnly = true;
             dgvAgenda.AllowUserToAddRows = false;
+            dgvAgenda.AllowUserToDeleteRows = false;
+
             dgvAgenda.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAgenda.MultiSelect = false;
+
+            // Ajustar las columnas al espacio disponible
             dgvAgenda.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Ajustar automáticamente la altura de las filas
+            dgvAgenda.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            // Encabezados
+            dgvAgenda.ColumnHeadersHeightSizeMode =
+                DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
+            // Evitar que el usuario cambie el tamaño de las columnas
+            dgvAgenda.AllowUserToResizeColumns = false;
+
+            // Apariencia
+            dgvAgenda.RowHeadersVisible = false;
+            dgvAgenda.BackgroundColor = System.Drawing.Color.White;
+            dgvAgenda.BorderStyle = BorderStyle.FixedSingle;
+
+            // Selección de filas
+            dgvAgenda.DefaultCellStyle.SelectionBackColor =
+                System.Drawing.Color.LightSteelBlue;
+
+            dgvAgenda.DefaultCellStyle.SelectionForeColor =
+                System.Drawing.Color.Black;
         }
 
 
