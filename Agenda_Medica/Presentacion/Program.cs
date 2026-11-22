@@ -1,31 +1,25 @@
-﻿using AccesoDatos.Conexion;
+﻿using LogicaNegocio.Servicios;
+using Modelos.Modelos;
 using Presentacion.Presentacion;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Presentacion
 {
     internal static class Program
     {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
+        // Punto de entrada principal de la aplicación.
         [STAThread]
         static void Main()
         {
+            // Habilitar los estilos visuales de Windows.
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
 
-           //Application.Run(new FrmPacientes());
-           //Application.Run(new FrmDoctores());
-           //Application.Run(new FrmCitas());
-           //Application.Run(new FrmHorarios());
-           Application.Run(new FrmPrincipal());
-           //Application.Run(new FrmEspecialidades());
-           //Application.Run(new FrmHistorialMedico());
+            // Configurar la representación de texto.
+            Application.SetCompatibleTextRenderingDefault(false);
+            
+            // Iniciar la aplicación mostrando el formulario de Login.
+            Application.Run(new FrmLogin());
         }
     }
 }

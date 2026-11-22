@@ -52,6 +52,7 @@
     <Compile Include="Modelos\HistorialMedico.cs" />
     <Compile Include="Modelos\HorarioMedico.cs" />
     <Compile Include="Modelos\Paciente.cs" />
+    <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

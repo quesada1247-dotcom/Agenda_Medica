@@ -54,6 +54,7 @@
     <Compile Include="Servicios\HistorialMedicoBLL.cs" />
     <Compile Include="Servicios\HorarioMedicoBLL.cs" />
     <Compile Include="Servicios\PacienteBLL.cs" />
+    <Compile Include="Servicios\UsuarioBLL.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
