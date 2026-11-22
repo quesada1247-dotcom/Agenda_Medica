@@ -17,9 +17,11 @@ namespace Presentacion
 
             // Configurar la representación de texto.
             Application.SetCompatibleTextRenderingDefault(false);
-            
+
             // Iniciar la aplicación mostrando el formulario de Login.
-            Application.Run(new FrmLogin());
+            Application.Run(new FrmLogin()); 
+
+            //Application.Run(new FrmPrincipal());
         }
     }
 }

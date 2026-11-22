@@ -51,7 +51,7 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.txtBuscar1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -257,21 +257,21 @@
             this.txtBuscar.Size = new System.Drawing.Size(110, 20);
             this.txtBuscar.TabIndex = 24;
             // 
-            // label9
+            // txtBuscar1
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(221, 56);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "label9";
+            this.txtBuscar1.AutoSize = true;
+            this.txtBuscar1.Location = new System.Drawing.Point(221, 56);
+            this.txtBuscar1.Name = "txtBuscar1";
+            this.txtBuscar1.Size = new System.Drawing.Size(79, 13);
+            this.txtBuscar1.TabIndex = 25;
+            this.txtBuscar1.Text = "Buscar Usuario";
             // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 545);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtBuscar1);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnActualizar);
@@ -328,6 +328,6 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label txtBuscar1;
     }
 }

@@ -59,5 +59,11 @@ namespace Presentacion.Presentacion
             formulario.ShowDialog();
 
         }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            FrmUsuarios formulario = new FrmUsuarios();
+            formulario.ShowDialog();
+        }
     }
 }
