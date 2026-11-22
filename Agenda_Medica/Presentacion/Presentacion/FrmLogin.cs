@@ -47,7 +47,7 @@ namespace Presentacion.Presentacion
                 );
 
                 // Abrir el formulario principal del sistema.
-                FrmPrincipal principal = new FrmPrincipal();
+                FrmPrincipal principal = new FrmPrincipal(usuario);
 
                 // Cerrar el formulario de inicio cuando se cierre el principal.
                 principal.FormClosed += (s, args) => this.Close();
