@@ -23,6 +23,12 @@ namespace Modelos.Modelos
         // Apellidos del doctor.
         public string Apellidos { get; set; }
 
+        // Nombre completo del doctor para mostrar en los formularios.
+        public string NombreCompleto
+        {
+            get { return Nombre + " " + Apellidos; }
+        }
+
         // Nombre de la especialidad del doctor.
         // Se utiliza principalmente para mostrar la información.
         public string Especialidad { get; set; }

@@ -125,5 +125,13 @@ namespace Presentacion.Presentacion
             FrmUsuarios formulario = new FrmUsuarios();
             formulario.ShowDialog();
         }
+        // =====================================================
+        // 11. Reportes
+        // =====================================================
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            FrmReportes formulario = new FrmReportes();
+            formulario.ShowDialog();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using Modelos.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace LogicaNegocio.Servicios
 {
@@ -211,6 +212,35 @@ namespace LogicaNegocio.Servicios
                 throw new ArgumentException("Selecciona una cita válida.");
 
             return citaDAL.Eliminar(idCita);
+        }
+
+
+
+        // ==========================================
+        // REPORTE 1: CITAS POR DIA Y DOCTOR
+        // ==========================================
+        public DataTable ReporteCitasPorDiaDoctor(DateTime fecha, int idDoctor)
+        {
+            if (idDoctor <= 0)
+                throw new ArgumentException("Debes seleccionar un doctor.");
+
+            return citaDAL.ReporteCitasPorDiaDoctor(fecha, idDoctor);
+        }
+
+        // ==========================================
+        // REPORTE 2: CITAS CANCELADAS
+        // ==========================================
+        public DataTable ReporteCitasCanceladas()
+        {
+            return citaDAL.ReporteCitasCanceladas();
+        }
+
+        // ==========================================
+        // REPORTE 3: PACIENTES ATENDIDOS
+        // ==========================================
+        public DataTable ReportePacientesAtendidos()
+        {
+            return citaDAL.ReportePacientesAtendidos();
         }
 
 

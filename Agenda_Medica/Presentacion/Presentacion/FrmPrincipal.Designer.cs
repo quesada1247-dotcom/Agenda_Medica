@@ -51,6 +51,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.btnAgenda = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnReportes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txttitulo
@@ -140,7 +141,7 @@
             // 
             // btnEspecialidades
             // 
-            this.btnEspecialidades.Location = new System.Drawing.Point(301, 331);
+            this.btnEspecialidades.Location = new System.Drawing.Point(299, 290);
             this.btnEspecialidades.Name = "btnEspecialidades";
             this.btnEspecialidades.Size = new System.Drawing.Size(124, 28);
             this.btnEspecialidades.TabIndex = 13;
@@ -150,7 +151,7 @@
             // 
             // btnHistorialMedico
             // 
-            this.btnHistorialMedico.Location = new System.Drawing.Point(442, 331);
+            this.btnHistorialMedico.Location = new System.Drawing.Point(442, 290);
             this.btnHistorialMedico.Name = "btnHistorialMedico";
             this.btnHistorialMedico.Size = new System.Drawing.Size(124, 28);
             this.btnHistorialMedico.TabIndex = 14;
@@ -242,7 +243,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(296, 290);
+            this.label14.Location = new System.Drawing.Point(296, 263);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(161, 13);
             this.label14.TabIndex = 24;
@@ -250,7 +251,7 @@
             // 
             // btnAgenda
             // 
-            this.btnAgenda.Location = new System.Drawing.Point(301, 378);
+            this.btnAgenda.Location = new System.Drawing.Point(299, 331);
             this.btnAgenda.Name = "btnAgenda";
             this.btnAgenda.Size = new System.Drawing.Size(124, 27);
             this.btnAgenda.TabIndex = 25;
@@ -268,11 +269,22 @@
             this.btnUsuarios.UseVisualStyleBackColor = true;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
+            // btnReportes
+            // 
+            this.btnReportes.Location = new System.Drawing.Point(442, 331);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(83, 27);
+            this.btnReportes.TabIndex = 27;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.UseVisualStyleBackColor = true;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(601, 485);
+            this.Controls.Add(this.btnReportes);
             this.Controls.Add(this.btnUsuarios);
             this.Controls.Add(this.btnAgenda);
             this.Controls.Add(this.label14);
@@ -328,5 +340,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnAgenda;
         private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.Button btnReportes;
     }
 }

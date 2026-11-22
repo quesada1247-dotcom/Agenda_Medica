@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Pqc.Crypto.Lms;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace AccesoDatos.Datos
 {
@@ -421,6 +422,127 @@ namespace AccesoDatos.Datos
                     return cantidad > 0;
                 }
             }
+        }
+
+        // ==========================================
+        // REPORTE 1: CITAS POR DÍA Y DOCTOR
+        // ==========================================
+        public DataTable ReporteCitasPorDiaDoctor(DateTime fecha, int idDoctor)
+        {
+            DataTable tabla = new DataTable();
+
+            string consulta = @"
+        SELECT
+            c.id_cita AS 'Número de cita',
+            CONCAT(p.nombre, ' ', p.apellidos) AS 'Paciente',
+            CONCAT(d.nombre, ' ', d.apellidos) AS 'Doctor',
+            c.fecha AS 'Fecha',
+            c.hora AS 'Hora',
+            c.hora_fin AS 'Hora final',
+            c.duracion_minutos AS 'Duración',
+            c.tipo AS 'Tipo',
+            c.estado AS 'Estado'
+        FROM Citas c
+        INNER JOIN Pacientes p ON c.id_paciente = p.id_paciente
+        INNER JOIN Doctores d ON c.id_doctor = d.id_doctor
+        WHERE c.fecha = @fecha
+        AND c.id_doctor = @idDoctor
+        ORDER BY c.hora";
+
+            using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+            {
+                conexion.Open();
+
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@fecha", fecha.Date);
+                    comando.Parameters.AddWithValue("@idDoctor", idDoctor);
+
+                    using (MySqlDataAdapter adaptador = new MySqlDataAdapter(comando))
+                    {
+                        adaptador.Fill(tabla);
+                    }
+                }
+            }
+
+            return tabla;
+        }
+
+        // ==========================================
+        // REPORTE 2: CITAS CANCELADAS
+        // ==========================================
+        public DataTable ReporteCitasCanceladas()
+        {
+            DataTable tabla = new DataTable();
+
+            string consulta = @"
+        SELECT
+            c.id_cita AS 'Número de cita',
+            CONCAT(p.nombre, ' ', p.apellidos) AS 'Paciente',
+            CONCAT(d.nombre, ' ', d.apellidos) AS 'Doctor',
+            c.fecha AS 'Fecha',
+            c.hora AS 'Hora',
+            c.motivo AS 'Motivo',
+            c.estado AS 'Estado'
+        FROM Citas c
+        INNER JOIN Pacientes p ON c.id_paciente = p.id_paciente
+        INNER JOIN Doctores d ON c.id_doctor = d.id_doctor
+        WHERE c.estado = 'Cancelada'
+        ORDER BY c.fecha DESC, c.hora";
+
+            using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+            {
+                conexion.Open();
+
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion))
+                {
+                    using (MySqlDataAdapter adaptador = new MySqlDataAdapter(comando))
+                    {
+                        adaptador.Fill(tabla);
+                    }
+                }
+            }
+
+            return tabla;
+        }
+
+        // ==========================================
+        // REPORTE 3: PACIENTES ATENDIDOS
+        // ==========================================
+        public DataTable ReportePacientesAtendidos()
+        {
+            DataTable tabla = new DataTable();
+
+            string consulta = @"
+        SELECT
+            c.id_cita AS 'Número de cita',
+            CONCAT(p.nombre, ' ', p.apellidos) AS 'Paciente',
+            p.identificacion AS 'Identificación',
+            CONCAT(d.nombre, ' ', d.apellidos) AS 'Doctor',
+            c.fecha AS 'Fecha de atención',
+            c.hora AS 'Hora',
+            c.motivo AS 'Motivo',
+            c.estado AS 'Estado'
+        FROM Citas c
+        INNER JOIN Pacientes p ON c.id_paciente = p.id_paciente
+        INNER JOIN Doctores d ON c.id_doctor = d.id_doctor
+        WHERE c.estado = 'Atendida'
+        ORDER BY c.fecha DESC, c.hora";
+
+            using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+            {
+                conexion.Open();
+
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion))
+                {
+                    using (MySqlDataAdapter adaptador = new MySqlDataAdapter(comando))
+                    {
+                        adaptador.Fill(tabla);
+                    }
+                }
+            }
+
+            return tabla;
         }
     }
 }
