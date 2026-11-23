@@ -212,6 +212,36 @@ namespace LogicaNegocio.Servicios
                 throw new ArgumentException("Selecciona una cita válida.");
 
             return citaDAL.Eliminar(idCita);
+
+        }
+
+        // CAMBIAR ESTADO DE UNA CITA
+        public bool CambiarEstadoCita(
+            int idCita,
+            string estado,
+            string observaciones)
+        {
+            if (idCita <= 0)
+                throw new ArgumentException("Selecciona una cita válida.");
+
+            string[] estadosPermitidos =
+            {
+        "Programada",
+        "Confirmada",
+        "Atendida",
+        "Cancelada",
+        "No asistio",
+        "Reprogramada"
+    };
+
+            if (Array.IndexOf(estadosPermitidos, estado) < 0)
+                throw new ArgumentException("El estado seleccionado no es válido.");
+
+            return citaDAL.ActualizarEstado(
+                idCita,
+                estado,
+                observaciones
+            );
         }
 
 

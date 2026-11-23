@@ -544,5 +544,35 @@ namespace AccesoDatos.Datos
 
             return tabla;
         }
+
+
+        // CAMBIAR ESTADO DE UNA CITA
+        public bool ActualizarEstado(int idCita, string estado, string observaciones)
+        {
+            string consulta = @"
+        UPDATE Citas
+        SET estado = @estado,
+            observaciones = @observaciones
+        WHERE id_cita = @idCita";
+
+            using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+            {
+                conexion.Open();
+
+                using (MySqlCommand comando = new MySqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@estado", estado);
+
+                    comando.Parameters.AddWithValue("@observaciones",
+                        string.IsNullOrWhiteSpace(observaciones)
+                        ? (object)DBNull.Value
+                        : observaciones);
+
+                    comando.Parameters.AddWithValue("@idCita", idCita);
+
+                    return comando.ExecuteNonQuery() > 0;
+                }
+            }
+        }
     }
 }

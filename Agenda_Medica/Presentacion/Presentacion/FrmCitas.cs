@@ -292,8 +292,7 @@ namespace Presentacion.Presentacion
                 if (estadoOriginal == "Atendida" ||
                     estadoOriginal == "No asistio")
                 {
-                    MessageBox.Show(
-                        "No se puede cancelar una cita que ya está finalizada.");
+                    MessageBox.Show("Esta cita ya está finalizada.");
                     return;
                 }
 
@@ -306,25 +305,14 @@ namespace Presentacion.Presentacion
                 if (respuesta != DialogResult.Yes)
                     return;
 
-                Cita cita = new Cita();
-
-                cita.IdCita = idCitaSeleccionada;
-                cita.IdPaciente = Convert.ToInt32(cmbPaciente.SelectedValue);
-                cita.IdDoctor = Convert.ToInt32(cmbDoctor.SelectedValue);
-                cita.Fecha = fechaOriginal;
-                cita.Hora = horaOriginal;
-                cita.Motivo = txtmotivo1.Text;
-                cita.Tipo = cmbTipoCita.SelectedItem.ToString();
-                cita.DuracionMinutos =
-                    Convert.ToInt32(cmbDuracion.SelectedItem);
-                cita.Estado = "Cancelada";
-
-                bool cancelada = citaBLL.ModificarCita(cita);
+                bool cancelada = citaBLL.CambiarEstadoCita(
+                    idCitaSeleccionada,
+                    "Cancelada",
+                    "Cancelada desde el módulo de citas");
 
                 if (cancelada)
                 {
-                    MessageBox.Show(
-                        "La cita fue cancelada correctamente. El registro se conservó.");
+                    MessageBox.Show("La cita fue cancelada correctamente.");
 
                     ConsultarCitas();
                     LimpiarCampos();
