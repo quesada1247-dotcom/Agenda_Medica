@@ -2,7 +2,6 @@
 using System.Data;
 using System.Windows.Forms;
 using LogicaNegocio.Servicios;
-using Modelos.Modelos;
 
 namespace Presentacion.Presentacion
 {
@@ -17,8 +16,14 @@ namespace Presentacion.Presentacion
         {
             InitializeComponent();
 
-            CargarDoctores();
+            // CONECTAR EVENTOS DE LOS BOTONES
+            btnCitasPorDoctor.Click += btnCitasPorDoctor_Click;
+            btnCitasCanceladas.Click += btnCitasCanceladas_Click;
+            btnPacientesAtendidos.Click += btnPacientesAtendidos_Click;
+            btnGenerar.Click += btnGenerar_Click;
+            btnLimpiar.Click += btnLimpiar_Click;
 
+            // CONFIGURAR TABLA
             dgvReportes.ReadOnly = true;
             dgvReportes.AllowUserToAddRows = false;
             dgvReportes.AutoSizeColumnsMode =
@@ -26,6 +31,11 @@ namespace Presentacion.Presentacion
             dgvReportes.SelectionMode =
                 DataGridViewSelectionMode.FullRowSelect;
             dgvReportes.MultiSelect = false;
+
+            // CARGAR INFORMACIÓN
+            CargarDoctores();
+
+            dtpFecha.Value = DateTime.Today;
         }
 
         // CARGAR DOCTORES
@@ -48,7 +58,7 @@ namespace Presentacion.Presentacion
             }
         }
 
-        // SELECCIONAR REPORTE
+        // SELECCIONAR REPORTE: CITAS POR DOCTOR
         private void btnCitasPorDoctor_Click(object sender, EventArgs e)
         {
             tipoReporte = "CITAS_DOCTOR";
@@ -59,6 +69,7 @@ namespace Presentacion.Presentacion
             dgvReportes.DataSource = null;
         }
 
+        // SELECCIONAR REPORTE: CITAS CANCELADAS
         private void btnCitasCanceladas_Click(object sender, EventArgs e)
         {
             tipoReporte = "CITAS_CANCELADAS";
@@ -69,6 +80,7 @@ namespace Presentacion.Presentacion
             GenerarReporte();
         }
 
+        // SELECCIONAR REPORTE: PACIENTES ATENDIDOS
         private void btnPacientesAtendidos_Click(object sender, EventArgs e)
         {
             tipoReporte = "PACIENTES_ATENDIDOS";
@@ -79,12 +91,13 @@ namespace Presentacion.Presentacion
             GenerarReporte();
         }
 
-        // GENERAR REPORTE
+        // BOTON GENERAR REPORTE
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             GenerarReporte();
         }
 
+        // GENERAR LOS REPORTES
         private void GenerarReporte()
         {
             try
@@ -95,11 +108,16 @@ namespace Presentacion.Presentacion
                 {
                     if (cmbDoctor.SelectedValue == null)
                     {
-                        MessageBox.Show("Debes seleccionar un doctor.");
+                        MessageBox.Show(
+                            "Debes seleccionar un doctor.",
+                            "Atención",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
                         return;
                     }
 
-                    int idDoctor = Convert.ToInt32(cmbDoctor.SelectedValue);
+                    int idDoctor =
+                        Convert.ToInt32(cmbDoctor.SelectedValue);
 
                     resultado = citaBLL.ReporteCitasPorDiaDoctor(
                         dtpFecha.Value.Date,
@@ -115,7 +133,11 @@ namespace Presentacion.Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Primero debes seleccionar un tipo de reporte.");
+                    MessageBox.Show(
+                        "Primero debes seleccionar un tipo de reporte.",
+                        "Atención",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -126,6 +148,15 @@ namespace Presentacion.Presentacion
                     MessageBox.Show(
                         "No se encontraron registros para este reporte.",
                         "Información",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Reporte generado correctamente. Registros encontrados: "
+                        + resultado.Rows.Count,
+                        "Reporte",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }

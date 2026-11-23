@@ -1,28 +1,43 @@
-﻿using LogicaNegocio.Servicios;
+﻿
+using LogicaNegocio.Servicios;
 using Modelos.Modelos;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Presentacion.Presentacion
 {
     public partial class FrmCitas : Form
     {
-        private PacienteBLL pacienteBLL = new PacienteBLL();
-        private DoctorBLL doctorBLL = new DoctorBLL();
-        private CitaBLL citaBLL = new CitaBLL();
+        private PacienteBLL pacienteBLL;
+        private DoctorBLL doctorBLL;
+        private CitaBLL citaBLL;
+
         private int idCitaSeleccionada = 0;
+        private DateTime fechaOriginal;
+        private TimeSpan horaOriginal;
+        private string estadoOriginal;
 
         public FrmCitas()
         {
             InitializeComponent();
+
+            if (System.ComponentModel.LicenseManager.UsageMode ==
+                System.ComponentModel.LicenseUsageMode.Designtime)
+            {
+                return;
+            }
+
+            pacienteBLL = new PacienteBLL();
+            doctorBLL = new DoctorBLL();
+            citaBLL = new CitaBLL();
+
             CargarListas();
             CargarTiposYDuraciones();
         }
 
+        // CARGAR TIPOS Y DURACIONES
         private void CargarTiposYDuraciones()
         {
-            // Cargar los tipos de cita.
             cmbTipoCita.Items.Clear();
             cmbTipoCita.Items.Add("Presencial");
             cmbTipoCita.Items.Add("Virtual");
@@ -31,7 +46,6 @@ namespace Presentacion.Presentacion
             cmbTipoCita.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoCita.SelectedIndex = 0;
 
-            // Cargar las duraciones.
             cmbDuracion.Items.Clear();
             cmbDuracion.Items.Add(30);
             cmbDuracion.Items.Add(45);
@@ -40,7 +54,8 @@ namespace Presentacion.Presentacion
             cmbDuracion.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDuracion.SelectedIndex = 0;
         }
-        // AQUÍ VAN LOS DOS ATRIBUTOS Y EL MÉTODO
+
+        // CARGAR PACIENTES Y DOCTORES
         private void CargarListas()
         {
             cmbPaciente.DataSource = pacienteBLL.ListarPacientes();
@@ -52,62 +67,72 @@ namespace Presentacion.Presentacion
             cmbDoctor.ValueMember = "IdDoctor";
         }
 
+        // REGISTRAR CITA
         private void btnGuardarCita_Click(object sender, EventArgs e)
         {
-             try
-    {
-        if (cmbPaciente.SelectedValue == null ||
-            cmbDoctor.SelectedValue == null)
-        {
-            MessageBox.Show("Debes seleccionar un paciente y un doctor.");
-            return;
+            try
+            {
+                if (cmbPaciente.SelectedValue == null ||
+                    cmbDoctor.SelectedValue == null)
+                {
+                    MessageBox.Show("Debes seleccionar un paciente y un doctor.");
+                    return;
+                }
+
+                Cita cita = new Cita();
+
+                cita.IdPaciente = Convert.ToInt32(cmbPaciente.SelectedValue);
+                cita.IdDoctor = Convert.ToInt32(cmbDoctor.SelectedValue);
+                cita.Fecha = dtpFecha.Value.Date;
+                cita.Hora = dtpHora.Value.TimeOfDay;
+                cita.Motivo = txtmotivo1.Text;
+                cita.Tipo = cmbTipoCita.SelectedItem.ToString();
+                cita.DuracionMinutos =
+                    Convert.ToInt32(cmbDuracion.SelectedItem);
+                cita.Estado = "Programada";
+
+                bool registrado = citaBLL.RegistrarCita(cita);
+
+                if (registrado)
+                {
+                    MessageBox.Show("Cita registrada correctamente.",
+                        "Registro exitoso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    LimpiarCampos();
+                    ConsultarCitas();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo registrar la cita.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar la cita: " + ex.Message);
+            }
         }
 
-        Cita cita = new Cita();
-
-        cita.IdPaciente = Convert.ToInt32(cmbPaciente.SelectedValue);
-        cita.IdDoctor = Convert.ToInt32(cmbDoctor.SelectedValue);
-        cita.Fecha = dtpFecha.Value.Date;
-        cita.Hora = dtpHora.Value.TimeOfDay;
-        cita.Motivo = txtmotivo1.Text;
-        cita.Tipo = cmbTipoCita.SelectedItem.ToString();
-        cita.DuracionMinutos = Convert.ToInt32(cmbDuracion.SelectedItem);
-        cita.Estado = "Programada";
-
-        bool registrado = citaBLL.RegistrarCita(cita);
-
-        if (registrado)
-        {
-            MessageBox.Show("Cita registrada correctamente.",
-                "Registro exitoso",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-
-            txtmotivo1.Clear();
-        }
-        else
-        {
-            MessageBox.Show("No se pudo registrar la cita.");
-        }
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Error al registrar la cita: " + ex.Message);
-    }
-        }
-
+        // CONSULTAR CITAS
         private void btnConsultarCitas_Click(object sender, EventArgs e)
+        {
+            ConsultarCitas();
+        }
+
+        private void ConsultarCitas()
         {
             try
             {
                 dgvCitas.DataSource = null;
                 dgvCitas.DataSource = citaBLL.ListarCitas();
 
-                // Ocultar los identificadores
-                dgvCitas.Columns["IdPaciente"].Visible = false;
-                dgvCitas.Columns["IdDoctor"].Visible = false;
+                if (dgvCitas.Columns.Contains("IdPaciente"))
+                    dgvCitas.Columns["IdPaciente"].Visible = false;
 
-                // Cambiar los encabezados
+                if (dgvCitas.Columns.Contains("IdDoctor"))
+                    dgvCitas.Columns["IdDoctor"].Visible = false;
+
                 dgvCitas.Columns["IdCita"].HeaderText = "N.º Cita";
                 dgvCitas.Columns["NombrePaciente"].HeaderText = "Paciente";
                 dgvCitas.Columns["NombreDoctor"].HeaderText = "Doctor";
@@ -115,7 +140,8 @@ namespace Presentacion.Presentacion
                 dgvCitas.Columns["Hora"].HeaderText = "Hora";
                 dgvCitas.Columns["Motivo"].HeaderText = "Motivo";
                 dgvCitas.Columns["Tipo"].HeaderText = "Tipo de cita";
-                dgvCitas.Columns["DuracionMinutos"].HeaderText = "Duración (minutos)";
+                dgvCitas.Columns["DuracionMinutos"].HeaderText =
+                    "Duración (minutos)";
                 dgvCitas.Columns["Estado"].HeaderText = "Estado";
 
                 if (dgvCitas.Rows.Count == 0)
@@ -128,50 +154,76 @@ namespace Presentacion.Presentacion
                 MessageBox.Show("Error al consultar las citas: " + ex.Message);
             }
         }
-        // EVENTO PARA SELECCIONAR UNA CITA Y CARGAR SUS DATOS
-        private void dgvCitas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        // SELECCIONAR UNA CITA
+        private void dgvCitas_CellContentClick(
+            object sender, DataGridViewCellEventArgs e)
         {
-            // Verifica que se haya seleccionado una fila válida.
-            if (e.RowIndex >= 0)
+            if (e.RowIndex < 0)
+                return;
+
+            try
             {
-                // Obtiene el ID de la cita seleccionada.
                 DataGridViewRow fila = dgvCitas.Rows[e.RowIndex];
 
-                idCitaSeleccionada = Convert.ToInt32(fila.Cells["IdCita"].Value);
+                idCitaSeleccionada =
+                    Convert.ToInt32(fila.Cells["IdCita"].Value);
 
-                // Carga el paciente y el doctor seleccionados.
-                cmbPaciente.SelectedValue = Convert.ToInt32(fila.Cells["IdPaciente"].Value);
-                cmbDoctor.SelectedValue = Convert.ToInt32(fila.Cells["IdDoctor"].Value);
+                fechaOriginal =
+                    Convert.ToDateTime(fila.Cells["Fecha"].Value);
 
-                // Carga la fecha y la hora de la cita.
-                dtpFecha.Value = Convert.ToDateTime(fila.Cells["Fecha"].Value);
-                dtpHora.Value = DateTime.Today.Add((TimeSpan)fila.Cells["Hora"].Value);
+                horaOriginal =
+                    (TimeSpan)fila.Cells["Hora"].Value;
 
-                // Carga el motivo de la cita.
-                txtmotivo1.Text = fila.Cells["Motivo"].Value.ToString();
+                estadoOriginal =
+                    fila.Cells["Estado"].Value.ToString();
 
-                // Cargar el tipo de cita.
-                cmbTipoCita.SelectedItem = fila.Cells["Tipo"].Value.ToString();
+                cmbPaciente.SelectedValue =
+                    Convert.ToInt32(fila.Cells["IdPaciente"].Value);
 
-                // Cargar la duración.
-                cmbDuracion.SelectedItem = Convert.ToInt32(
-                    fila.Cells["DuracionMinutos"].Value);
+                cmbDoctor.SelectedValue =
+                    Convert.ToInt32(fila.Cells["IdDoctor"].Value);
+
+                dtpFecha.Value = fechaOriginal;
+
+                dtpHora.Value =
+                    DateTime.Today.Add(horaOriginal);
+
+                txtmotivo1.Text =
+                    fila.Cells["Motivo"].Value.ToString();
+
+                cmbTipoCita.SelectedItem =
+                    fila.Cells["Tipo"].Value.ToString();
+
+                cmbDuracion.SelectedItem =
+                    Convert.ToInt32(fila.Cells["DuracionMinutos"].Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al seleccionar la cita: " + ex.Message);
             }
         }
 
-        // EVENTO PARA MODIFICAR UNA CITA REGISTRADA
+        // MODIFICAR Y REPROGRAMAR
         private void btnModificarCita_Click(object sender, EventArgs e)
         {
             try
             {
-                // Verifica que se haya seleccionado una cita.
                 if (idCitaSeleccionada <= 0)
                 {
                     MessageBox.Show("Primero debes seleccionar una cita.");
                     return;
                 }
 
-                // Crea un objeto con los datos actualizados.
+                if (estadoOriginal == "Cancelada" ||
+                    estadoOriginal == "Atendida" ||
+                    estadoOriginal == "No asistio")
+                {
+                    MessageBox.Show(
+                        "Esta cita ya está finalizada o cancelada y no se puede modificar.");
+                    return;
+                }
+
                 Cita cita = new Cita();
 
                 cita.IdCita = idCitaSeleccionada;
@@ -181,21 +233,33 @@ namespace Presentacion.Presentacion
                 cita.Hora = dtpHora.Value.TimeOfDay;
                 cita.Motivo = txtmotivo1.Text;
                 cita.Tipo = cmbTipoCita.SelectedItem.ToString();
-                cita.DuracionMinutos = Convert.ToInt32(cmbDuracion.SelectedItem);
-                cita.Estado = "Programada";
+                cita.DuracionMinutos =
+                    Convert.ToInt32(cmbDuracion.SelectedItem);
 
-                // Envía los cambios a la base de datos.
+                bool cambioHorario =
+                    cita.Fecha.Date != fechaOriginal.Date ||
+                    cita.Hora != horaOriginal;
+
+                if (cambioHorario)
+                {
+                    cita.Estado = "Reprogramada";
+                }
+                else
+                {
+                    cita.Estado = estadoOriginal;
+                }
+
                 bool modificado = citaBLL.ModificarCita(cita);
 
                 if (modificado)
                 {
-                    MessageBox.Show("Cita modificada correctamente.");
+                    MessageBox.Show(
+                        cambioHorario
+                        ? "La cita fue reprogramada correctamente."
+                        : "La cita fue modificada correctamente.");
 
-                    // Actualiza la tabla con los datos nuevos.
-                    btnConsultarCitas.PerformClick();
-
-                    // Limpia el identificador seleccionado.
-                    idCitaSeleccionada = 0;
+                    ConsultarCitas();
+                    LimpiarCampos();
                 }
                 else
                 {
@@ -208,53 +272,97 @@ namespace Presentacion.Presentacion
             }
         }
 
-        // EVENTO PARA ELIMINAR UNA CITA
+        // CANCELAR CITA SIN ELIMINAR EL REGISTRO
         private void btnEliminarCita_Click(object sender, EventArgs e)
         {
             try
             {
-                // Verifica que se haya seleccionado una cita.
                 if (idCitaSeleccionada <= 0)
                 {
                     MessageBox.Show("Primero debes seleccionar una cita.");
                     return;
                 }
 
-                // Solicita confirmación antes de eliminar.
+                if (estadoOriginal == "Cancelada")
+                {
+                    MessageBox.Show("Esta cita ya está cancelada.");
+                    return;
+                }
+
+                if (estadoOriginal == "Atendida" ||
+                    estadoOriginal == "No asistio")
+                {
+                    MessageBox.Show(
+                        "No se puede cancelar una cita que ya está finalizada.");
+                    return;
+                }
+
                 DialogResult respuesta = MessageBox.Show(
-                    "¿Estás seguro de que deseas eliminar esta cita?",
-                    "Confirmar eliminación",
+                    "¿Deseas cancelar esta cita? El registro se conservará en el historial.",
+                    "Confirmar cancelación",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
-                if (respuesta == DialogResult.Yes)
+                if (respuesta != DialogResult.Yes)
+                    return;
+
+                Cita cita = new Cita();
+
+                cita.IdCita = idCitaSeleccionada;
+                cita.IdPaciente = Convert.ToInt32(cmbPaciente.SelectedValue);
+                cita.IdDoctor = Convert.ToInt32(cmbDoctor.SelectedValue);
+                cita.Fecha = fechaOriginal;
+                cita.Hora = horaOriginal;
+                cita.Motivo = txtmotivo1.Text;
+                cita.Tipo = cmbTipoCita.SelectedItem.ToString();
+                cita.DuracionMinutos =
+                    Convert.ToInt32(cmbDuracion.SelectedItem);
+                cita.Estado = "Cancelada";
+
+                bool cancelada = citaBLL.ModificarCita(cita);
+
+                if (cancelada)
                 {
-                    // Elimina la cita seleccionada.
-                    bool eliminado = citaBLL.EliminarCita(idCitaSeleccionada);
+                    MessageBox.Show(
+                        "La cita fue cancelada correctamente. El registro se conservó.");
 
-                    if (eliminado)
-                    {
-                        MessageBox.Show("Cita eliminada correctamente.");
-
-                        // Actualiza la tabla.
-                        btnConsultarCitas.PerformClick();
-
-                        // Reinicia el identificador seleccionado.
-                        idCitaSeleccionada = 0;
-
-                        // Limpia el motivo.
-                        txtmotivo1.Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo eliminar la cita.");
-                    }
+                    ConsultarCitas();
+                    LimpiarCampos();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo cancelar la cita.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar la cita: " + ex.Message);
+                MessageBox.Show("Error al cancelar la cita: " + ex.Message);
             }
+        }
+
+        // LIMPIAR CAMPOS
+        private void LimpiarCampos()
+        {
+            idCitaSeleccionada = 0;
+            fechaOriginal = DateTime.MinValue;
+            horaOriginal = TimeSpan.Zero;
+            estadoOriginal = null;
+
+            if (cmbPaciente.Items.Count > 0)
+                cmbPaciente.SelectedIndex = 0;
+
+            if (cmbDoctor.Items.Count > 0)
+                cmbDoctor.SelectedIndex = 0;
+
+            if (cmbTipoCita.Items.Count > 0)
+                cmbTipoCita.SelectedIndex = 0;
+
+            if (cmbDuracion.Items.Count > 0)
+                cmbDuracion.SelectedIndex = 0;
+
+            dtpFecha.Value = DateTime.Today;
+            dtpHora.Value = DateTime.Today;
+            txtmotivo1.Clear();
         }
     }
 }

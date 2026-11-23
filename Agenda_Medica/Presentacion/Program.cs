@@ -21,8 +21,7 @@ namespace Presentacion
             // Iniciar la aplicación mostrando el formulario de Login.
             Application.Run(new FrmLogin()); 
 
-            //Application.Run(new FrmPrincipal()); 
-            Application.Run(new FrmReportes());
+            
         }
     }
 }

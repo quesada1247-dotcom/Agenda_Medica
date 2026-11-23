@@ -168,9 +168,9 @@
             // dgvCitas
             // 
             this.dgvCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCitas.Location = new System.Drawing.Point(3, 385);
+            this.dgvCitas.Location = new System.Drawing.Point(3, 358);
             this.dgvCitas.Name = "dgvCitas";
-            this.dgvCitas.Size = new System.Drawing.Size(391, 173);
+            this.dgvCitas.Size = new System.Drawing.Size(482, 200);
             this.dgvCitas.TabIndex = 13;
             this.dgvCitas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCitas_CellContentClick);
             // 
@@ -232,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 564);
+            this.ClientSize = new System.Drawing.Size(488, 564);
             this.Controls.Add(this.cmbDuracion);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbTipoCita);
