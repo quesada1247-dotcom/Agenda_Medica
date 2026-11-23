@@ -44,13 +44,17 @@
             this.dgvAgenda = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.chkFiltrarFecha = new System.Windows.Forms.CheckBox();
+            this.cmbNuevoEstado = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtObservacionesEstado = new System.Windows.Forms.TextBox();
+            this.btnCambiarEstado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 20);
+            this.label1.Location = new System.Drawing.Point(181, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 0;
@@ -59,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 68);
+            this.label2.Location = new System.Drawing.Point(19, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(162, 13);
             this.label2.TabIndex = 1;
@@ -68,7 +72,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(124, 117);
+            this.label3.Location = new System.Drawing.Point(127, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 13);
             this.label3.TabIndex = 2;
@@ -77,7 +81,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(57, 156);
+            this.label4.Location = new System.Drawing.Point(19, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 3;
@@ -87,7 +91,7 @@
             // 
             this.cmbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDoctor.FormattingEnabled = true;
-            this.cmbDoctor.Location = new System.Drawing.Point(60, 171);
+            this.cmbDoctor.Location = new System.Drawing.Point(22, 123);
             this.cmbDoctor.Name = "cmbDoctor";
             this.cmbDoctor.Size = new System.Drawing.Size(121, 21);
             this.cmbDoctor.TabIndex = 4;
@@ -95,7 +99,7 @@
             // Paciente
             // 
             this.Paciente.AutoSize = true;
-            this.Paciente.Location = new System.Drawing.Point(67, 213);
+            this.Paciente.Location = new System.Drawing.Point(19, 157);
             this.Paciente.Name = "Paciente";
             this.Paciente.Size = new System.Drawing.Size(49, 13);
             this.Paciente.TabIndex = 5;
@@ -105,7 +109,7 @@
             // 
             this.cmbPaciente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPaciente.FormattingEnabled = true;
-            this.cmbPaciente.Location = new System.Drawing.Point(60, 230);
+            this.cmbPaciente.Location = new System.Drawing.Point(22, 179);
             this.cmbPaciente.Name = "cmbPaciente";
             this.cmbPaciente.Size = new System.Drawing.Size(121, 21);
             this.cmbPaciente.TabIndex = 6;
@@ -113,7 +117,7 @@
             // dtpFecha
             // 
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(320, 172);
+            this.dtpFecha.Location = new System.Drawing.Point(207, 124);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(117, 20);
             this.dtpFecha.TabIndex = 7;
@@ -121,7 +125,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(317, 156);
+            this.label5.Location = new System.Drawing.Point(204, 107);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 8;
@@ -130,7 +134,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(317, 213);
+            this.label6.Location = new System.Drawing.Point(380, 107);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 13);
             this.label6.TabIndex = 9;
@@ -140,14 +144,14 @@
             // 
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(320, 230);
+            this.cmbEstado.Location = new System.Drawing.Point(374, 123);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(121, 21);
             this.cmbEstado.TabIndex = 10;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(145, 279);
+            this.btnBuscar.Location = new System.Drawing.Point(130, 240);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(81, 23);
             this.btnBuscar.TabIndex = 11;
@@ -157,7 +161,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(287, 279);
+            this.btnLimpiar.Location = new System.Drawing.Point(238, 240);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(86, 23);
             this.btnLimpiar.TabIndex = 12;
@@ -170,18 +174,18 @@
             this.dgvAgenda.AllowUserToAddRows = false;
             this.dgvAgenda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAgenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAgenda.Location = new System.Drawing.Point(5, 317);
+            this.dgvAgenda.Location = new System.Drawing.Point(5, 284);
             this.dgvAgenda.MultiSelect = false;
             this.dgvAgenda.Name = "dgvAgenda";
             this.dgvAgenda.ReadOnly = true;
             this.dgvAgenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAgenda.Size = new System.Drawing.Size(520, 225);
+            this.dgvAgenda.Size = new System.Drawing.Size(520, 258);
             this.dgvAgenda.TabIndex = 13;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 301);
+            this.label7.Location = new System.Drawing.Point(12, 268);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 14;
@@ -190,18 +194,56 @@
             // chkFiltrarFecha
             // 
             this.chkFiltrarFecha.AutoSize = true;
-            this.chkFiltrarFecha.Location = new System.Drawing.Point(184, 199);
+            this.chkFiltrarFecha.Location = new System.Drawing.Point(22, 206);
             this.chkFiltrarFecha.Name = "chkFiltrarFecha";
             this.chkFiltrarFecha.Size = new System.Drawing.Size(99, 17);
             this.chkFiltrarFecha.TabIndex = 15;
             this.chkFiltrarFecha.Text = "Filtrar por fecha";
             this.chkFiltrarFecha.UseVisualStyleBackColor = true;
             // 
+            // cmbNuevoEstado
+            // 
+            this.cmbNuevoEstado.FormattingEnabled = true;
+            this.cmbNuevoEstado.Location = new System.Drawing.Point(207, 179);
+            this.cmbNuevoEstado.Name = "cmbNuevoEstado";
+            this.cmbNuevoEstado.Size = new System.Drawing.Size(121, 21);
+            this.cmbNuevoEstado.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(204, 157);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(139, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Cambiar el Estado de la Cita";
+            // 
+            // txtObservacionesEstado
+            // 
+            this.txtObservacionesEstado.Location = new System.Drawing.Point(207, 203);
+            this.txtObservacionesEstado.Name = "txtObservacionesEstado";
+            this.txtObservacionesEstado.Size = new System.Drawing.Size(103, 20);
+            this.txtObservacionesEstado.TabIndex = 19;
+            // 
+            // btnCambiarEstado
+            // 
+            this.btnCambiarEstado.Location = new System.Drawing.Point(364, 240);
+            this.btnCambiarEstado.Name = "btnCambiarEstado";
+            this.btnCambiarEstado.Size = new System.Drawing.Size(100, 23);
+            this.btnCambiarEstado.TabIndex = 20;
+            this.btnCambiarEstado.Text = "Cambiar Estado";
+            this.btnCambiarEstado.UseVisualStyleBackColor = true;
+            this.btnCambiarEstado.Click += new System.EventHandler(this.btnCambiarEstado_Click);
+            // 
             // FrmAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(530, 554);
+            this.Controls.Add(this.btnCambiarEstado);
+            this.Controls.Add(this.txtObservacionesEstado);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cmbNuevoEstado);
             this.Controls.Add(this.chkFiltrarFecha);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dgvAgenda);
@@ -245,5 +287,9 @@
         private System.Windows.Forms.DataGridView dgvAgenda;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox chkFiltrarFecha;
+        private System.Windows.Forms.ComboBox cmbNuevoEstado;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtObservacionesEstado;
+        private System.Windows.Forms.Button btnCambiarEstado;
     }
 }

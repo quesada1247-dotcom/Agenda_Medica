@@ -26,10 +26,12 @@ namespace Presentacion.Presentacion
             CargarDoctores();
             CargarPacientes();
             CargarEstados();
+            CargarEstadosCambio();
 
             // Conectar los botones
             btnBuscar.Click += btnBuscar_Click;
             btnLimpiar.Click += btnLimpiar_Click;
+            btnCambiarEstado.Click += btnCambiarEstado_Click;
 
             // Configurar la tabla
             ConfigurarTabla();
@@ -266,6 +268,93 @@ namespace Presentacion.Presentacion
 
             dgvAgenda.DataSource = null;
 
+        }
+
+        // CARGAR ESTADOS PARA CAMBIAR UNA CITA
+        private void CargarEstadosCambio()
+        {
+            cmbNuevoEstado.Items.Clear();
+
+            cmbNuevoEstado.Items.Add("Programada");
+            cmbNuevoEstado.Items.Add("Confirmada");
+            cmbNuevoEstado.Items.Add("Atendida");
+            cmbNuevoEstado.Items.Add("Cancelada");
+            cmbNuevoEstado.Items.Add("No asistio");
+            cmbNuevoEstado.Items.Add("Reprogramada");
+
+            cmbNuevoEstado.SelectedIndex = -1;
+        }
+
+        private void btnCambiarEstado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvAgenda.CurrentRow == null)
+                {
+                    MessageBox.Show("Primero debes seleccionar una cita.",
+                        "Atención",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (cmbNuevoEstado.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Debes seleccionar el nuevo estado.",
+                        "Atención",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int idCita = Convert.ToInt32(
+                    dgvAgenda.CurrentRow.Cells["IdCita"].Value);
+
+                string nuevoEstado = cmbNuevoEstado.SelectedItem.ToString();
+
+                string observaciones = txtObservacionesEstado.Text.Trim();
+
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Deseas cambiar el estado de esta cita a " + nuevoEstado + "?",
+                    "Confirmar cambio",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (respuesta != DialogResult.Yes)
+                    return;
+
+                bool actualizado = citaBLL.CambiarEstadoCita(
+                    idCita,
+                    nuevoEstado,
+                    observaciones);
+
+                if (actualizado)
+                {
+                    MessageBox.Show(
+                        "El estado de la cita se actualizó correctamente.",
+                        "Éxito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    cmbNuevoEstado.SelectedIndex = -1;
+                    txtObservacionesEstado.Clear();
+
+                    // Actualizar la tabla conservando los filtros
+                    btnBuscar_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el estado de la cita.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al cambiar el estado: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
