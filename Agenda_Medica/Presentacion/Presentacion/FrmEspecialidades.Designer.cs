@@ -95,7 +95,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(3, 245);
+            this.btnGuardar.Location = new System.Drawing.Point(12, 235);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 6;
@@ -104,7 +104,7 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(87, 245);
+            this.btnConsultar.Location = new System.Drawing.Point(100, 235);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
             this.btnConsultar.TabIndex = 7;
@@ -113,7 +113,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(182, 245);
+            this.btnModificar.Location = new System.Drawing.Point(192, 235);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 8;
@@ -122,7 +122,7 @@
             // 
             // btnDesactivar
             // 
-            this.btnDesactivar.Location = new System.Drawing.Point(273, 245);
+            this.btnDesactivar.Location = new System.Drawing.Point(288, 235);
             this.btnDesactivar.Name = "btnDesactivar";
             this.btnDesactivar.Size = new System.Drawing.Size(75, 23);
             this.btnDesactivar.TabIndex = 9;
@@ -132,16 +132,16 @@
             // dgvEspecialidades
             // 
             this.dgvEspecialidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEspecialidades.Location = new System.Drawing.Point(12, 274);
+            this.dgvEspecialidades.Location = new System.Drawing.Point(3, 264);
             this.dgvEspecialidades.Name = "dgvEspecialidades";
-            this.dgvEspecialidades.Size = new System.Drawing.Size(383, 174);
+            this.dgvEspecialidades.Size = new System.Drawing.Size(428, 214);
             this.dgvEspecialidades.TabIndex = 10;
             // 
             // FrmEspecialidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 451);
+            this.ClientSize = new System.Drawing.Size(434, 480);
             this.Controls.Add(this.dgvEspecialidades);
             this.Controls.Add(this.btnDesactivar);
             this.Controls.Add(this.btnModificar);

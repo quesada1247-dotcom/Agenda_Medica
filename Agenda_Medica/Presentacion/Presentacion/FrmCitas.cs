@@ -283,48 +283,38 @@ namespace Presentacion.Presentacion
                     return;
                 }
 
-                if (estadoOriginal == "Cancelada")
-                {
-                    MessageBox.Show("Esta cita ya está cancelada.");
-                    return;
-                }
-
-                if (estadoOriginal == "Atendida" ||
-                    estadoOriginal == "No asistio")
-                {
-                    MessageBox.Show("Esta cita ya está finalizada.");
-                    return;
-                }
-
                 DialogResult respuesta = MessageBox.Show(
-                    "¿Deseas cancelar esta cita? El registro se conservará en el historial.",
-                    "Confirmar cancelación",
+                    "¿Deseas eliminar definitivamente esta cita?",
+                    "Confirmar eliminación",
                     MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                    MessageBoxIcon.Warning
+                );
 
                 if (respuesta != DialogResult.Yes)
                     return;
 
-                bool cancelada = citaBLL.CambiarEstadoCita(
-                    idCitaSeleccionada,
-                    "Cancelada",
-                    "Cancelada desde el módulo de citas");
+                bool eliminado = citaBLL.EliminarCita(idCitaSeleccionada);
 
-                if (cancelada)
+                if (eliminado)
                 {
-                    MessageBox.Show("La cita fue cancelada correctamente.");
+                    MessageBox.Show("La cita se eliminó correctamente.");
 
                     ConsultarCitas();
                     LimpiarCampos();
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo cancelar la cita.");
+                    MessageBox.Show("No se pudo eliminar la cita.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cancelar la cita: " + ex.Message);
+                MessageBox.Show(
+                    "Error al eliminar la cita: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
 

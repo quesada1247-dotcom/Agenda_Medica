@@ -77,7 +77,7 @@
             // txtapellidos
             // 
             this.txtapellidos.AutoSize = true;
-            this.txtapellidos.Location = new System.Drawing.Point(199, 92);
+            this.txtapellidos.Location = new System.Drawing.Point(244, 92);
             this.txtapellidos.Name = "txtapellidos";
             this.txtapellidos.Size = new System.Drawing.Size(52, 13);
             this.txtapellidos.TabIndex = 3;
@@ -85,7 +85,7 @@
             // 
             // txtapellidos2
             // 
-            this.txtapellidos2.Location = new System.Drawing.Point(202, 108);
+            this.txtapellidos2.Location = new System.Drawing.Point(247, 108);
             this.txtapellidos2.Name = "txtapellidos2";
             this.txtapellidos2.Size = new System.Drawing.Size(100, 20);
             this.txtapellidos2.TabIndex = 4;
@@ -102,7 +102,7 @@
             // txttelefono
             // 
             this.txttelefono.AutoSize = true;
-            this.txttelefono.Location = new System.Drawing.Point(199, 157);
+            this.txttelefono.Location = new System.Drawing.Point(244, 157);
             this.txttelefono.Name = "txttelefono";
             this.txttelefono.Size = new System.Drawing.Size(52, 13);
             this.txttelefono.TabIndex = 7;
@@ -110,7 +110,7 @@
             // 
             // txttelefono4
             // 
-            this.txttelefono4.Location = new System.Drawing.Point(202, 173);
+            this.txttelefono4.Location = new System.Drawing.Point(247, 173);
             this.txttelefono4.Name = "txttelefono4";
             this.txttelefono4.Size = new System.Drawing.Size(100, 20);
             this.txttelefono4.TabIndex = 8;
@@ -133,7 +133,7 @@
             // 
             // btnguardar
             // 
-            this.btnguardar.Location = new System.Drawing.Point(13, 275);
+            this.btnguardar.Location = new System.Drawing.Point(36, 262);
             this.btnguardar.Name = "btnguardar";
             this.btnguardar.Size = new System.Drawing.Size(64, 27);
             this.btnguardar.TabIndex = 11;
@@ -143,7 +143,7 @@
             // 
             // btnconsultar
             // 
-            this.btnconsultar.Location = new System.Drawing.Point(202, 275);
+            this.btnconsultar.Location = new System.Drawing.Point(216, 262);
             this.btnconsultar.Name = "btnconsultar";
             this.btnconsultar.Size = new System.Drawing.Size(65, 27);
             this.btnconsultar.TabIndex = 13;
@@ -153,7 +153,7 @@
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Location = new System.Drawing.Point(108, 275);
+            this.btnmodificar.Location = new System.Drawing.Point(122, 262);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(75, 27);
             this.btnmodificar.TabIndex = 14;
@@ -163,7 +163,7 @@
             // 
             // btneliminar
             // 
-            this.btneliminar.Location = new System.Drawing.Point(108, 320);
+            this.btneliminar.Location = new System.Drawing.Point(300, 262);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(75, 27);
             this.btneliminar.TabIndex = 15;
@@ -174,9 +174,9 @@
             // dgvDoctores
             // 
             this.dgvDoctores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDoctores.Location = new System.Drawing.Point(11, 370);
+            this.dgvDoctores.Location = new System.Drawing.Point(3, 295);
             this.dgvDoctores.Name = "dgvDoctores";
-            this.dgvDoctores.Size = new System.Drawing.Size(304, 142);
+            this.dgvDoctores.Size = new System.Drawing.Size(478, 211);
             this.dgvDoctores.TabIndex = 16;
             this.dgvDoctores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDoctores_CellClick);
             // 
@@ -186,13 +186,13 @@
             this.cmbEspecialidad.FormattingEnabled = true;
             this.cmbEspecialidad.Location = new System.Drawing.Point(33, 173);
             this.cmbEspecialidad.Name = "cmbEspecialidad";
-            this.cmbEspecialidad.Size = new System.Drawing.Size(110, 21);
+            this.cmbEspecialidad.Size = new System.Drawing.Size(100, 21);
             this.cmbEspecialidad.TabIndex = 17;
             // 
             // txtidentificacion
             // 
             this.txtidentificacion.AutoSize = true;
-            this.txtidentificacion.Location = new System.Drawing.Point(199, 209);
+            this.txtidentificacion.Location = new System.Drawing.Point(244, 209);
             this.txtidentificacion.Name = "txtidentificacion";
             this.txtidentificacion.Size = new System.Drawing.Size(73, 13);
             this.txtidentificacion.TabIndex = 18;
@@ -200,7 +200,7 @@
             // 
             // txtidentificacion6
             // 
-            this.txtidentificacion6.Location = new System.Drawing.Point(202, 225);
+            this.txtidentificacion6.Location = new System.Drawing.Point(247, 225);
             this.txtidentificacion6.Name = "txtidentificacion6";
             this.txtidentificacion6.Size = new System.Drawing.Size(100, 20);
             this.txtidentificacion6.TabIndex = 19;
@@ -209,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(327, 524);
+            this.ClientSize = new System.Drawing.Size(485, 518);
             this.Controls.Add(this.txtidentificacion6);
             this.Controls.Add(this.txtidentificacion);
             this.Controls.Add(this.cmbEspecialidad);

@@ -62,7 +62,7 @@
             // txtnombre
             // 
             this.txtnombre.AutoSize = true;
-            this.txtnombre.Location = new System.Drawing.Point(24, 99);
+            this.txtnombre.Location = new System.Drawing.Point(24, 76);
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(44, 13);
             this.txtnombre.TabIndex = 1;
@@ -71,7 +71,7 @@
             // 
             // txtnombre1
             // 
-            this.txtnombre1.Location = new System.Drawing.Point(3, 125);
+            this.txtnombre1.Location = new System.Drawing.Point(12, 96);
             this.txtnombre1.Name = "txtnombre1";
             this.txtnombre1.Size = new System.Drawing.Size(100, 20);
             this.txtnombre1.TabIndex = 2;
@@ -79,7 +79,7 @@
             // txtapellido
             // 
             this.txtapellido.AutoSize = true;
-            this.txtapellido.Location = new System.Drawing.Point(216, 99);
+            this.txtapellido.Location = new System.Drawing.Point(216, 76);
             this.txtapellido.Name = "txtapellido";
             this.txtapellido.Size = new System.Drawing.Size(49, 13);
             this.txtapellido.TabIndex = 3;
@@ -87,7 +87,7 @@
             // 
             // txtapellido1
             // 
-            this.txtapellido1.Location = new System.Drawing.Point(190, 125);
+            this.txtapellido1.Location = new System.Drawing.Point(190, 96);
             this.txtapellido1.Name = "txtapellido1";
             this.txtapellido1.Size = new System.Drawing.Size(100, 20);
             this.txtapellido1.TabIndex = 4;
@@ -95,7 +95,7 @@
             // txtindentificacion
             // 
             this.txtindentificacion.AutoSize = true;
-            this.txtindentificacion.Location = new System.Drawing.Point(12, 176);
+            this.txtindentificacion.Location = new System.Drawing.Point(19, 137);
             this.txtindentificacion.Name = "txtindentificacion";
             this.txtindentificacion.Size = new System.Drawing.Size(70, 13);
             this.txtindentificacion.TabIndex = 5;
@@ -103,7 +103,7 @@
             // 
             // txtidentificacion1
             // 
-            this.txtidentificacion1.Location = new System.Drawing.Point(3, 204);
+            this.txtidentificacion1.Location = new System.Drawing.Point(5, 153);
             this.txtidentificacion1.Name = "txtidentificacion1";
             this.txtidentificacion1.Size = new System.Drawing.Size(100, 20);
             this.txtidentificacion1.TabIndex = 6;
@@ -111,7 +111,7 @@
             // txttelefono
             // 
             this.txttelefono.AutoSize = true;
-            this.txttelefono.Location = new System.Drawing.Point(216, 176);
+            this.txttelefono.Location = new System.Drawing.Point(206, 137);
             this.txttelefono.Name = "txttelefono";
             this.txttelefono.Size = new System.Drawing.Size(49, 13);
             this.txttelefono.TabIndex = 7;
@@ -119,7 +119,7 @@
             // 
             // txttelefono1
             // 
-            this.txttelefono1.Location = new System.Drawing.Point(190, 204);
+            this.txttelefono1.Location = new System.Drawing.Point(190, 153);
             this.txttelefono1.Name = "txttelefono1";
             this.txttelefono1.Size = new System.Drawing.Size(100, 20);
             this.txttelefono1.TabIndex = 8;
@@ -127,7 +127,7 @@
             // txtcorreo
             // 
             this.txtcorreo.AutoSize = true;
-            this.txtcorreo.Location = new System.Drawing.Point(24, 261);
+            this.txtcorreo.Location = new System.Drawing.Point(30, 185);
             this.txtcorreo.Name = "txtcorreo";
             this.txtcorreo.Size = new System.Drawing.Size(38, 13);
             this.txtcorreo.TabIndex = 9;
@@ -135,7 +135,7 @@
             // 
             // txtcorreo1
             // 
-            this.txtcorreo1.Location = new System.Drawing.Point(3, 288);
+            this.txtcorreo1.Location = new System.Drawing.Point(5, 201);
             this.txtcorreo1.Name = "txtcorreo1";
             this.txtcorreo1.Size = new System.Drawing.Size(100, 20);
             this.txtcorreo1.TabIndex = 10;
@@ -143,7 +143,7 @@
             // txtfechanacimiento
             // 
             this.txtfechanacimiento.AutoSize = true;
-            this.txtfechanacimiento.Location = new System.Drawing.Point(187, 261);
+            this.txtfechanacimiento.Location = new System.Drawing.Point(188, 185);
             this.txtfechanacimiento.Name = "txtfechanacimiento";
             this.txtfechanacimiento.Size = new System.Drawing.Size(106, 13);
             this.txtfechanacimiento.TabIndex = 11;
@@ -152,14 +152,14 @@
             // dtpFechaNacimiento
             // 
             this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(180, 285);
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(190, 201);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(123, 20);
             this.dtpFechaNacimiento.TabIndex = 12;
             // 
             // btnguardar
             // 
-            this.btnguardar.Location = new System.Drawing.Point(27, 353);
+            this.btnguardar.Location = new System.Drawing.Point(22, 250);
             this.btnguardar.Name = "btnguardar";
             this.btnguardar.Size = new System.Drawing.Size(62, 23);
             this.btnguardar.TabIndex = 13;
@@ -169,7 +169,7 @@
             // 
             // btnlimpiar
             // 
-            this.btnlimpiar.Location = new System.Drawing.Point(118, 353);
+            this.btnlimpiar.Location = new System.Drawing.Point(104, 250);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnlimpiar.TabIndex = 14;
@@ -179,7 +179,7 @@
             // 
             // btnconsultar
             // 
-            this.btnconsultar.Location = new System.Drawing.Point(219, 353);
+            this.btnconsultar.Location = new System.Drawing.Point(191, 250);
             this.btnconsultar.Name = "btnconsultar";
             this.btnconsultar.Size = new System.Drawing.Size(75, 23);
             this.btnconsultar.TabIndex = 15;
@@ -192,16 +192,16 @@
             this.dgvPacientes.AllowUserToAddRows = false;
             this.dgvPacientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPacientes.Location = new System.Drawing.Point(5, 442);
+            this.dgvPacientes.Location = new System.Drawing.Point(5, 279);
             this.dgvPacientes.Name = "dgvPacientes";
             this.dgvPacientes.ReadOnly = true;
-            this.dgvPacientes.Size = new System.Drawing.Size(310, 120);
+            this.dgvPacientes.Size = new System.Drawing.Size(506, 292);
             this.dgvPacientes.TabIndex = 16;
             this.dgvPacientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPacientes_CellClick);
             // 
             // btnmodificar
             // 
-            this.btnmodificar.Location = new System.Drawing.Point(77, 392);
+            this.btnmodificar.Location = new System.Drawing.Point(378, 250);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(61, 23);
             this.btnmodificar.TabIndex = 17;
@@ -211,7 +211,7 @@
             // 
             // btneliminar
             // 
-            this.btneliminar.Location = new System.Drawing.Point(180, 392);
+            this.btneliminar.Location = new System.Drawing.Point(283, 250);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(75, 23);
             this.btneliminar.TabIndex = 18;
@@ -223,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(327, 574);
+            this.ClientSize = new System.Drawing.Size(514, 574);
             this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.dgvPacientes);

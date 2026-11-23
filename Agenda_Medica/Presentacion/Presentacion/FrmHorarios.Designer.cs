@@ -139,7 +139,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(163, 299);
+            this.btnGuardar.Location = new System.Drawing.Point(222, 215);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 10;
@@ -149,7 +149,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(244, 299);
+            this.btnModificar.Location = new System.Drawing.Point(317, 215);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 11;
@@ -159,7 +159,7 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(163, 328);
+            this.btnConsultar.Location = new System.Drawing.Point(222, 262);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 24);
             this.btnConsultar.TabIndex = 12;
@@ -169,7 +169,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(243, 328);
+            this.btnEliminar.Location = new System.Drawing.Point(317, 262);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(76, 24);
             this.btnEliminar.TabIndex = 13;
@@ -182,11 +182,11 @@
             this.dgvHorarios.AllowUserToAddRows = false;
             this.dgvHorarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHorarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHorarios.Location = new System.Drawing.Point(2, 372);
+            this.dgvHorarios.Location = new System.Drawing.Point(2, 328);
             this.dgvHorarios.Name = "dgvHorarios";
             this.dgvHorarios.ReadOnly = true;
             this.dgvHorarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHorarios.Size = new System.Drawing.Size(317, 156);
+            this.dgvHorarios.Size = new System.Drawing.Size(415, 223);
             this.dgvHorarios.TabIndex = 14;
             this.dgvHorarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHorarios_CellClick);
             // 
@@ -194,7 +194,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 540);
+            this.ClientSize = new System.Drawing.Size(420, 563);
             this.Controls.Add(this.dgvHorarios);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnConsultar);

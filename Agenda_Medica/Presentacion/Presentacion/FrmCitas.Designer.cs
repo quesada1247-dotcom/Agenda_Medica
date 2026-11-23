@@ -132,7 +132,7 @@
             // txtmotivo
             // 
             this.txtmotivo.AutoSize = true;
-            this.txtmotivo.Location = new System.Drawing.Point(14, 264);
+            this.txtmotivo.Location = new System.Drawing.Point(223, 164);
             this.txtmotivo.Name = "txtmotivo";
             this.txtmotivo.Size = new System.Drawing.Size(39, 13);
             this.txtmotivo.TabIndex = 9;
@@ -140,14 +140,14 @@
             // 
             // txtmotivo1
             // 
-            this.txtmotivo1.Location = new System.Drawing.Point(14, 280);
+            this.txtmotivo1.Location = new System.Drawing.Point(212, 183);
             this.txtmotivo1.Name = "txtmotivo1";
-            this.txtmotivo1.Size = new System.Drawing.Size(118, 20);
+            this.txtmotivo1.Size = new System.Drawing.Size(121, 20);
             this.txtmotivo1.TabIndex = 10;
             // 
             // btnGuardarCita
             // 
-            this.btnGuardarCita.Location = new System.Drawing.Point(14, 329);
+            this.btnGuardarCita.Location = new System.Drawing.Point(58, 274);
             this.btnGuardarCita.Name = "btnGuardarCita";
             this.btnGuardarCita.Size = new System.Drawing.Size(75, 23);
             this.btnGuardarCita.TabIndex = 11;
@@ -157,7 +157,7 @@
             // 
             // btnConsultarCitas
             // 
-            this.btnConsultarCitas.Location = new System.Drawing.Point(115, 329);
+            this.btnConsultarCitas.Location = new System.Drawing.Point(152, 274);
             this.btnConsultarCitas.Name = "btnConsultarCitas";
             this.btnConsultarCitas.Size = new System.Drawing.Size(75, 23);
             this.btnConsultarCitas.TabIndex = 12;
@@ -168,15 +168,15 @@
             // dgvCitas
             // 
             this.dgvCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCitas.Location = new System.Drawing.Point(3, 358);
+            this.dgvCitas.Location = new System.Drawing.Point(2, 303);
             this.dgvCitas.Name = "dgvCitas";
-            this.dgvCitas.Size = new System.Drawing.Size(482, 200);
+            this.dgvCitas.Size = new System.Drawing.Size(534, 255);
             this.dgvCitas.TabIndex = 13;
             this.dgvCitas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCitas_CellContentClick);
             // 
             // btnModificarCita
             // 
-            this.btnModificarCita.Location = new System.Drawing.Point(214, 329);
+            this.btnModificarCita.Location = new System.Drawing.Point(249, 274);
             this.btnModificarCita.Name = "btnModificarCita";
             this.btnModificarCita.Size = new System.Drawing.Size(75, 23);
             this.btnModificarCita.TabIndex = 14;
@@ -186,7 +186,7 @@
             // 
             // btnEliminarCita
             // 
-            this.btnEliminarCita.Location = new System.Drawing.Point(306, 329);
+            this.btnEliminarCita.Location = new System.Drawing.Point(349, 274);
             this.btnEliminarCita.Name = "btnEliminarCita";
             this.btnEliminarCita.Size = new System.Drawing.Size(75, 23);
             this.btnEliminarCita.TabIndex = 15;
@@ -232,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 564);
+            this.ClientSize = new System.Drawing.Size(541, 564);
             this.Controls.Add(this.cmbDuracion);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbTipoCita);
