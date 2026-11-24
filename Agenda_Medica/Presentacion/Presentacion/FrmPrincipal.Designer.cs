@@ -65,7 +65,7 @@
             // 
             // btnPacientes
             // 
-            this.btnPacientes.Location = new System.Drawing.Point(299, 176);
+            this.btnPacientes.Location = new System.Drawing.Point(301, 178);
             this.btnPacientes.Name = "btnPacientes";
             this.btnPacientes.Size = new System.Drawing.Size(91, 29);
             this.btnPacientes.TabIndex = 1;
@@ -75,7 +75,7 @@
             // 
             // btnDoctores
             // 
-            this.btnDoctores.Location = new System.Drawing.Point(424, 176);
+            this.btnDoctores.Location = new System.Drawing.Point(301, 219);
             this.btnDoctores.Name = "btnDoctores";
             this.btnDoctores.Size = new System.Drawing.Size(91, 31);
             this.btnDoctores.TabIndex = 2;
@@ -85,7 +85,7 @@
             // 
             // btnCitas
             // 
-            this.btnCitas.Location = new System.Drawing.Point(299, 220);
+            this.btnCitas.Location = new System.Drawing.Point(424, 177);
             this.btnCitas.Name = "btnCitas";
             this.btnCitas.Size = new System.Drawing.Size(91, 30);
             this.btnCitas.TabIndex = 3;
@@ -131,7 +131,7 @@
             // 
             // btnHorarios
             // 
-            this.btnHorarios.Location = new System.Drawing.Point(424, 222);
+            this.btnHorarios.Location = new System.Drawing.Point(424, 219);
             this.btnHorarios.Name = "btnHorarios";
             this.btnHorarios.Size = new System.Drawing.Size(91, 28);
             this.btnHorarios.TabIndex = 11;
